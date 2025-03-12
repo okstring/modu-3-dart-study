@@ -169,5 +169,12 @@ fabric.properties
 
 .idea/
 
+# remove DS_Store
+
+.DS_Store
+._.DS_Store
+**/.DS_Store
+**/._.DS_Store
+
 # raw folder
 TIL/00_raw/
