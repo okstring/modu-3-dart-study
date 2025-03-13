@@ -21,22 +21,22 @@ class Hero {
   }
 }
 
-void main() {
-  int i = 10;
-  // 인스턴스 생성
-  Hero hero = Hero('홍길동', 100);
-  hero.attack();
-
-  print(hero.name);
-
-  hero.hp = 50;
-
-  print(hero.hp);
-
-  final Random random = Random();
-  final int randomNumber = random.nextInt(10); // 0 ~ 9
-  print(randomNumber);
-}
+// void main() {
+//   int i = 10;
+//   // 인스턴스 생성
+//   Hero hero = Hero('홍길동', 100);
+//   hero.attack();
+//
+//   print(hero.name);
+//
+//   hero.hp = 50;
+//
+//   print(hero.hp);
+//
+//   final Random random = Random();
+//   final int randomNumber = random.nextInt(10); // 0 ~ 9
+//   print(randomNumber);
+// }
 
 // 순수 함수
 int function1(int x) {
