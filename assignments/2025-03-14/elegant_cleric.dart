@@ -7,7 +7,9 @@ class Cleric {
   int hp;
   int mp;
 
-  Cleric(this.name, {this.hp = maxHp, this.mp = maxMp});
+  Cleric(this.name, {int? hp, int? mp})
+      : hp = ((hp ?? maxHp).clamp(0, maxHp)),
+        mp = ((mp ?? maxMp).clamp(0, maxMp));
 
   void selfAid() {
     if (mp >= 5) {
@@ -25,4 +27,6 @@ class Cleric {
   }
 }
 
-main() { }
+main() {
+  const foo = Cleric.maxHp;
+}
