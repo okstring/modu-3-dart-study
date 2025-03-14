@@ -60,13 +60,14 @@ class Cleric {
     // }
 
     // mp가 maxMp를 넘지 않도록 설정
+    int currentMp = mp;
     mp = min(mp + recoveredMp, maxMp);
 
     // mp += recoveredMp;
     // mp = mp.clamp(0, maxMp);
 
     print("$name이(가) mp $recoveredMp 회복하였습니다. 현재 mp: $mp");
-    return recoveredMp;
+    return mp - currentMp;
   }
 
   int pray2(int prayTime) {
