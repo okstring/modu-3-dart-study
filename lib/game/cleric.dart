@@ -1,14 +1,14 @@
 import 'dart:math';
 
 class Cleric {
-  final int maxHp = 50; // maxhp, maxmp는 상수(final) 필드
+  final int maxHp = 50;
   final int maxMp = 10;
 
   String name;
-  int hp = 50; // 초기치
-  int mp = 10;
+  int hp;
+  int mp;
 
-  Cleric(this.name); // maxhp, maxmp는 상수로 설정되어있으므로 제외
+  Cleric(this.name, {this.hp = 50, this.mp = 10});
 
   void selfAid() {
     // hp 만땅
