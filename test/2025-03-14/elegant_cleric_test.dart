@@ -3,34 +3,41 @@ import 'package:test/test.dart';
 
 void main() {
   group('Cleric Constructor 테스트', () {
-    late Cleric? sally;
-    late Cleric? tom;
-    late Cleric? john;
+    test('Cleric - 변수 체크', () {
+      const name = 'Sally';
 
-    test('Cleric - hp, mp 기본값', () {
-      sally = Cleric('Sally');
+      final sally = Cleric('Sally');
 
-      expect(sally?.hp, equals(50));
-      expect(sally?.mp, equals(10));
+      expect(sally.hp, equals(50));
+      expect(sally.name, equals(name));
     });
 
-    test('Cleric - mp만 기본값', () {
-      tom = Cleric('tom', hp: 5);
+    test('Cleric - 잘못된 HP 할당', () {
+      const name = 'Tom';
+      const excessHp = 100;
 
-      expect(tom?.hp, equals(5));
-      expect(tom?.mp, equals(10));
+      final tom = Cleric(name, hp: excessHp);
+
+      expect(tom.hp, equals(50));
     });
 
-    test('Cleric - hp만 기본값', () {
-      john = Cleric('John', mp: 5);
+    test('Cleric - MP 테스트', () {
+      const name = 'John';
+      const mp = 0;
 
-      expect(john?.hp, equals(50));
-      expect(john?.mp, equals(5));
+      final john = Cleric(name, mp: mp);
+      john.selfAid();
+      john.pray(1);
+
+      expect(john.mp, lessThan(5));
     });
 
     test('Cleric - 정적변수 테스트', () {
-      expect(Cleric.maxHp, 50);
-      expect(Cleric.maxMp, 10);
+      const maxHp = Cleric.maxHp;
+      const maxMp = Cleric.maxMp;
+
+      expect(maxHp, 50);
+      expect(maxMp, 10);
     });
   });
 }
