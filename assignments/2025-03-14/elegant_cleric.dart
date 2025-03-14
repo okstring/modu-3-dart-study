@@ -7,13 +7,9 @@ class Cleric {
   int hp;
   int mp;
 
-  Cleric({
-    required this.name,
-    hp,
-    mp,
-  })
-      : hp = Cleric.maxHp,
-        mp = Cleric.maxMp;
+  Cleric(this.name, {int? hp, int? mp})
+    : hp = hp ?? Cleric.maxHp,
+      mp = mp ?? Cleric.maxMp;
 
   void selfAid() {
     if (mp >= 5) {
@@ -31,8 +27,4 @@ class Cleric {
   }
 }
 
-main() {
-  final a = Cleric(name: '아서스', hp: 40, mp: 5);
-  final b = Cleric(name: '아서스', hp: 35);
-  final c = Cleric(name: '아서스');
-}
+main() { }
