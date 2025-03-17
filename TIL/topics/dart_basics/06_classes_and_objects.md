@@ -55,7 +55,7 @@ void main() {
 
 ## 객체지향의 프로그래밍의 4대 요소와 Dart에서의 구현
 
-
+예시를 잘 알아두자!
 
 ### 1. 캡슐화(Encapsulation)
 
@@ -64,7 +64,7 @@ void main() {
 - 내용물을 보호막 안에 감싸는 개념
   - 데이터 은닉, 기능 결합
 
-- 자동차 제조사는 내부 구현을 바꿔도 외부 인터페이스만 유지하면 운전자는 계속 사용 가능
+
 
 #### private
 
@@ -98,8 +98,7 @@ Dart에서는 모든 인스턴스 변수에 대해 암묵적인 getter와 setter
 
 ```dart
 class BankAccount {
-  // 언더스코어(_)로 시작하는 변수는 Dart에서 private 멤버입니다
-  double _balance = 0.0;  // private 변수
+  double _balance = 0.0
   
   // getter 메서드
   double get balance => _balance;
@@ -124,8 +123,7 @@ class BankAccount {
 void main() {
   var account = BankAccount();
   account.deposit(1000);
-  print(account.balance);  // 1000.0 출력
-  // account._balance = -100;  // 오류! private 변수에 직접 접근 불가
+  print(account.balance);
 }
 ```
 
@@ -218,7 +216,6 @@ class Rectangle extends Shape {
 }
 
 void main() {
-  // 다형성 - 부모 타입 변수에 자식 객체 할당
   List<Shape> shapes = [
     Circle(5),
     Rectangle(4, 6)
