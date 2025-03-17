@@ -87,7 +87,13 @@ part of 'main.dart';
 
 
 
+### List<E>.unmodifiable
 
+- 모든 내용을 포함하는 변경 불가능한 목록을 만듭니다
+
+### moveNext()
+
+- 앞에 요소가 있으면 true
 
 ### map()
 
