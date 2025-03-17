@@ -40,11 +40,11 @@ class Wizard {
     _wand = value;
   }
 
-  Wizard(String name, int hp, int mp, Wand? wand) :
-        _name = name,
-        _hp = max(0, hp),
-        _mp = mp,
-        _wand = wand {
+  Wizard(String name, int hp, int mp, Wand? wand)
+    : _name = name,
+      _hp = max(0, hp),
+      _mp = mp,
+      _wand = wand {
     if (name.length < 3) {
       throw Exception('❎이름은 3자 이상이어야 합니다.');
     }
@@ -55,4 +55,4 @@ class Wizard {
   }
 }
 
-main() { }
+main() {}

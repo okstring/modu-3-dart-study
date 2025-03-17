@@ -21,7 +21,6 @@ class Wand {
     _power = value;
   }
 
-
   Wand(this._name, this._power) {
     if (name.length < 3) {
       throw Exception('❎이름은 3자 이상이어야 합니다.');
