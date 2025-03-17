@@ -10,9 +10,7 @@ class Wizard {
   String get name => _name;
 
   set name(String value) {
-    if (value.length < 3) {
-      throw Exception('❎이름은 3자 이상이어야 합니다.');
-    }
+    _validateName(value);
     _name = value;
   }
 
@@ -25,18 +23,14 @@ class Wizard {
   int get mp => _mp;
 
   set mp(int value) {
-    if (value < 0) {
-      throw Exception('❎마법사의 MP는 0 이상이어야 합니다.');
-    }
+    _validateMp(value);
     _mp = value;
   }
 
   Wand? get wand => _wand;
 
   set wand(Wand? value) {
-    if (value == null) {
-      throw Exception('❎지팡이를 없앨 순 없습니다.');
-    }
+    _validateWand(value);
     _wand = value;
   }
 
@@ -45,12 +39,25 @@ class Wizard {
       _hp = max(0, hp),
       _mp = mp,
       _wand = wand {
+    _validateName(name);
+    _validateMp(mp);
+  }
+
+  void _validateName(String name) {
     if (name.length < 3) {
       throw Exception('❎이름은 3자 이상이어야 합니다.');
     }
+  }
 
+  void _validateMp(int mp) {
     if (mp < 0) {
       throw Exception('❎마법사의 MP는 0 이상이어야 합니다.');
+    }
+  }
+
+  void _validateWand(Wand? wand) {
+    if (wand == null) {
+      throw Exception('❎지팡이를 없앨 순 없습니다.');
     }
   }
 }
