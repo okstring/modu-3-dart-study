@@ -81,13 +81,18 @@ void main() {
 
 
     test('유효하지 않은 마력에 대한 메세지가 똑같아야 한다. ', () {
-      const double power = 101.1;
+      const double highPower = 101.1;
+      const double lowPower = 0.4;
 
       Wand wand;
 
       expect(() {
-        wand = Wand('foo', power);
+        wand = Wand('foo', highPower);
       } , throwsA((e) => e is CustomException && e.message == TaskException.invalidPower.message));
+
+      expect(() {
+        wand = Wand('foo', lowPower);
+      }, throwsA((e) => e is CustomException && e.message == TaskException.invalidPower.message));
     });
   });
 }
