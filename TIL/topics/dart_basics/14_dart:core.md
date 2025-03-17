@@ -93,7 +93,7 @@ part of 'main.dart';
 
 ### moveNext()
 
-- 앞에 요소가 있으면 true
+- Iterator 클래스의 메서드로, 반복자가 다음 요소로 이동할 수 있으면 true를 반환
 
 ### map()
 
