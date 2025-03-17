@@ -68,18 +68,17 @@ void main() {
       } , throwsA((e) => e is CustomException && e.message == TaskError.invalidName.message));
     });
 
-    test('지팡이 마력은 0.5 이상, 100.0 이하 되어야 한다.', () {
+    test('지팡이 마력은 경계값(0.5와 100.0)을 포함합니다', () {
       final stick = Wand('Foo', 0.5);
-      final stickB = Wand('Bar', 0.5);
-      const double power = 0.5;
-      const double powerB = 100.0;
-
-      stick.power = power;
-      stickB.power = powerB;
+      final stickB = Wand('Bar', 100.0);
+      final stickC = Wand('Baz', 50.0);
 
       expect(stick.power, equals(0.5));
       expect(stickB.power, equals(100.0));
+      expect(stickC.power, equals(50.0));
     });
+
+
 
     test('유효하지 않은 마력에 대한 메세지가 똑같아야 한다. ', () {
       const double power = 101.1;
