@@ -40,7 +40,7 @@ class Wizard {
     _wand = value;
   }
 
-  Wizard(String name, int hp, int mp, Wand? wand)
+  Wizard(String name, int hp, int mp, {Wand? wand})
     : _name = name,
       _hp = max(0, hp),
       _mp = mp,
