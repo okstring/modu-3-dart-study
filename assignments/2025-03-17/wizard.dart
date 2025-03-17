@@ -1,3 +1,4 @@
+import 'taskError.dart';
 import 'wand.dart';
 import 'dart:math';
 
@@ -45,19 +46,19 @@ class Wizard {
 
   void _validateName(String name) {
     if (name.length < 3) {
-      throw Exception('❎이름은 3자 이상이어야 합니다.');
+      throw TaskError.invalidName;
     }
   }
 
   void _validateMp(int mp) {
     if (mp < 0) {
-      throw Exception('❎마법사의 MP는 0 이상이어야 합니다.');
+      throw TaskError.invalidMp;
     }
   }
 
   void _validateWand(Wand? wand) {
     if (wand == null) {
-      throw Exception('❎지팡이를 없앨 순 없습니다.');
+      throw TaskError.invalidWand;
     }
   }
 }
