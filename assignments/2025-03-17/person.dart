@@ -11,4 +11,22 @@ class Person {
   Person({required this.name, required this.birthYear});
 }
 
-main() {}
+main() {
+  // 연습문제 2
+  final Map<String, int> personNames = {};
+  final hong = Person(name: '홍길동', birthYear: 2005);
+  final han = Person(name: '한석봉', birthYear: 2000);
+
+  personNames[hong.name] = hong.age;
+  personNames[han.name] = han.age;
+
+  for (final entry in personNames.entries) {
+    print('${entry.key}의 나이는 ${entry.value}살');
+  }
+
+  // 연습문제 3
+  final List<Person> personList = [hong, han];
+  for (final person in personList) {
+    print(person.name);
+  }
+}
