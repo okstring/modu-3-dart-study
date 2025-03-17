@@ -1,4 +1,4 @@
-import '../../assignments/2025-03-17/taskError.dart';
+import '../../assignments/2025-03-17/task_exception.dart';
 import '../../assignments/2025-03-17/wizard.dart';
 import '../../assignments/2025-03-17/wand.dart';
 import 'package:test/test.dart';
@@ -19,7 +19,7 @@ void main() {
 
       expect(() {
         wizard = Wizard(name, 0, 0);
-      } , throwsA((e) => e is CustomException && e.message == TaskError.invalidName.message));
+      } , throwsA((e) => e is CustomException && e.message == TaskException.invalidName.message));
     });
 
     test('MP는 0 이상 되어야 한다.', () {
@@ -37,7 +37,7 @@ void main() {
 
       expect(() {
         wizard = Wizard('foo', 0, mp);
-      } , throwsA((e) => e is CustomException && e.message == TaskError.invalidMp.message));
+      } , throwsA((e) => e is CustomException && e.message == TaskException.invalidMp.message));
     });
 
     test('HP는 음수가 되는 상황에서는 0으로 되어야 한다.', () {
@@ -65,7 +65,7 @@ void main() {
 
       expect(() {
         wand = Wand(name, 0.0);
-      } , throwsA((e) => e is CustomException && e.message == TaskError.invalidName.message));
+      } , throwsA((e) => e is CustomException && e.message == TaskException.invalidName.message));
     });
 
     test('지팡이 마력은 경계값(0.5와 100.0)을 포함합니다', () {
@@ -87,7 +87,7 @@ void main() {
 
       expect(() {
         wand = Wand('foo', power);
-      } , throwsA((e) => e is CustomException && e.message == TaskError.invalidPower.message));
+      } , throwsA((e) => e is CustomException && e.message == TaskException.invalidPower.message));
     });
   });
 }

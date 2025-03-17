@@ -1,4 +1,4 @@
-import 'taskError.dart';
+import 'task_exception.dart';
 
 class Wand {
   String _name;
@@ -26,13 +26,13 @@ class Wand {
 
   void _validateName(String name) {
     if (name.length < 3) {
-      throw TaskError.invalidName;
+      throw TaskException.invalidName;
     }
   }
 
   void _validatePower(double power) {
     if (power < 0.5 || power > 100.0) {
-      throw TaskError.invalidPower;
+      throw TaskException.invalidPower;
     }
   }
 }

@@ -1,4 +1,4 @@
-import 'taskError.dart';
+import 'task_exception.dart';
 import 'wand.dart';
 import 'dart:math';
 
@@ -46,19 +46,19 @@ class Wizard {
 
   void _validateName(String name) {
     if (name.length < 3) {
-      throw TaskError.invalidName;
+      throw TaskException.invalidName;
     }
   }
 
   void _validateMp(int mp) {
     if (mp < 0) {
-      throw TaskError.invalidMp;
+      throw TaskException.invalidMp;
     }
   }
 
   void _validateWand(Wand? wand) {
     if (wand == null) {
-      throw TaskError.invalidWand;
+      throw TaskException.invalidWand;
     }
   }
 }

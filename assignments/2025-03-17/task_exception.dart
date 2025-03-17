@@ -1,5 +1,5 @@
 
-class TaskError {
+class TaskException {
   static final invalidName = CustomException(message: '❎이름은 3자 이상이어야 합니다.');
   static final invalidMp = CustomException(message: '❎마법사의 MP는 0 이상이어야 합니다.');
   static final invalidWand = CustomException(message: '❎지팡이를 없앨 순 없습니다.');
