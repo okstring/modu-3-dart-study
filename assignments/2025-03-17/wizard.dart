@@ -6,11 +6,12 @@ import 'dart:math';
 class Wizard {
   static const healMpCost = 10;
   static const noMpMsg = '마나가 부족합니다';
+  static const maxMp = 100;
   static casingHealMsg(int hp) => '힐을 시전했습니다. 대상 HP: $hp';
 
   String _name;
   int _hp;
-  int _mp = 100;
+  int _mp;
   Wand? _wand;
 
   String get name => _name;
@@ -40,9 +41,10 @@ class Wizard {
     _wand = value;
   }
 
-  Wizard(String name, int hp, {Wand? wand})
+  Wizard(String name, int hp, {int mp = maxMp, Wand? wand})
     : _name = name,
       _hp = max(0, hp),
+      _mp = maxMp,
       _wand = wand {
     _validateName(name);
   }

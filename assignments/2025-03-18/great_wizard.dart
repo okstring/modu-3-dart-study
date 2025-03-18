@@ -4,10 +4,10 @@ import 'hero.dart';
 
 class GreatWizard extends Wizard {
   static const hasNoMpMsg = '마나가 부족합니다';
+  static const maxMp = 150;
   static superHealMsg(int hp) => '슈퍼힐을 시전했습니다. 대상 HP: $hp';
-  GreatWizard(super.name, super.hp, {super.wand}) {
-    super.mp = 150;
-  }
+
+  GreatWizard(super.name, super.hp, {int mp = maxMp, super.wand});
 
   void superHeal(Hero hero) {
     if (mp < 50) {
@@ -17,4 +17,8 @@ class GreatWizard extends Wizard {
       print(superHealMsg(hero.hp));
     }
   }
+}
+
+main() {
+
 }

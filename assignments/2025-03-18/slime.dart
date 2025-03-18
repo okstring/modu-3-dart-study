@@ -1,7 +1,8 @@
 import 'hero.dart';
 
 class Slime {
-  static const String tenDamageMsg = '10의 데미지';
+  static const int attackDamage = 10;
+  static String damageMsg(int damage) => '$damage의 데미지';
   static String attackMsg(String suffix) => '슬라임$suffix이/가 공격했다';
 
   final String suffix;
@@ -11,7 +12,7 @@ class Slime {
 
   void attack(Hero hero) {
     print(attackMsg(suffix));
-    print(tenDamageMsg);
-    hero.hp -= 10;
+    print(damageMsg(attackDamage));
+    hero.hp = hero.hp - attackDamage;
   }
 }
