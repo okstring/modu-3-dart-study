@@ -55,12 +55,12 @@ class Wizard {
   }
 
   void heal(Hero hero) {
-    if (mp < Wizard.healMpCost) {
-      print(Wizard.noMpMsg);
+    if (mp < healMpCost) {
+      print(noMpMsg);
     } else {
-      hero.hp += healAmount;
+      hero.receiveHealing(healAmount);
       mp -= healMpCost;
-      print(Wizard.casingHealMsg(hero.hp));
+      print(casingHealMsg(hero.hp));
     }
   }
 

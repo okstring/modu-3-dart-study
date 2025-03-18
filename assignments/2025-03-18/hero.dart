@@ -19,5 +19,9 @@ class Hero {
     _hp = min(maxHp, _hp);
   }
 
+  void receiveHealing(int amount) {
+    hp += amount;
+  }
+
   Hero({required this.name, required int hp}) : _hp = hp;
 }
