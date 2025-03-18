@@ -42,7 +42,7 @@ class Wizard {
     if (value == null) {
       throw TaskException.invalidWand;
     } else {
-      wand = value;
+      _wand = value;
     }
   }
 
