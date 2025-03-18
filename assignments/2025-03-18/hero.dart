@@ -1,7 +1,7 @@
 import 'dart:math';
 
 class Hero {
-  static const int maxHp = 100;
+  static const int maxHp = 10000;
   static const String alreadyFellDeadMeg = '이미 쓰러져있습니다.';
   final String name;
   int _hp;

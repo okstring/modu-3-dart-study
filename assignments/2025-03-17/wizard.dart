@@ -5,6 +5,7 @@ import 'dart:math';
 
 class Wizard {
   static const healMpCost = 10;
+  static const healAmount = 20;
   static const noMpMsg = '마나가 부족합니다';
   static const maxMp = 100;
   static casingHealMsg(int hp) => '힐을 시전했습니다. 대상 HP: $hp';
@@ -53,8 +54,8 @@ class Wizard {
     if (mp < Wizard.healMpCost) {
       print(Wizard.noMpMsg);
     } else {
-      hero.hp += 20;
-      mp -= 10;
+      hero.hp += healAmount;
+      mp -= healMpCost;
       print(Wizard.casingHealMsg(hero.hp));
     }
   }

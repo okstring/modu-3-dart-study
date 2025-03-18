@@ -39,34 +39,38 @@ void main() {
       expect(slime, isA<Slime>());
     });
 
-    test('Poison Slime은 독 공격 시 추가로 hp를 1/5 감소시킨다', () {
+    test('독 공격 시 추가로 hp를 1/5 감소시킨다', () {
       final poisonSlime = PoisonSlime('-mini');
-      const hp = 100;
+      const hp = 10000;
+      const count = 2;
       final hero = Hero(name: '홍길동', hp: hp);
 
-      poisonSlime.attack(hero);
+      int expectHp = hp;
+      for (int i = 0; i < count; i++) {
+        poisonSlime.attack(hero);
+        expectHp = (expectHp - Slime.attackDamage - ((expectHp - Slime.attackDamage) * 0.2).toInt());
+      }
 
-      expect(hero.hp, hp - Slime.attackDamage - ((hp - Slime.attackDamage) * 0.2));
+      expect(hero.hp, expectHp);
+    });
+
+    test('poison Count가 다 소진되면 poison 공격이 불가능하다.', () {
+      final poisonSlime = PoisonSlime('-mini');
+      const hp = 10000;
+      const count = 5;
+      final hero = Hero(name: '홍길동', hp: hp);
+
+      int expectHp = hp;
+      for (int i = 0; i < count; i++) {
+        if (poisonSlime.poisonCount == 0) {
+          expectHp -= 10;
+        } else {
+          poisonSlime.attack(hero);
+          expectHp = (expectHp - Slime.attackDamage - ((expectHp - Slime.attackDamage) * 0.2).toInt());
+        }
+      }
+
+      expect(hero.hp, expectHp);
     });
   });
-
-  // group('Poison Slime 테스트', () {
-    // test('이름은 3자 이상 되어야 한다.', () {
-    //   const name = 'stick';
-    //
-    //   final stick = Wand(name, 50.0);
-    //
-    //   expect(stick.name.length, greaterThanOrEqualTo(3));
-    // });
-    //
-    // test('유효하지 않은 이름에 대한 메세지가 똑같아야 한다. ', () {
-    //   const name = 'H';
-    //
-    //   Wand wand;
-    //
-    //   expect(() {
-    //     wand = Wand(name, 0.0);
-    //   } , throwsA((e) => e is CustomException && e.message == TaskException.invalidName.message));
-    // });
-  // });
 }
