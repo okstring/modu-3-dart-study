@@ -60,6 +60,7 @@ class Wizard {
     if (wand == null) {
       throw TaskException.invalidWand;
     }
+    this.wand = wand;
   }
 }
 
