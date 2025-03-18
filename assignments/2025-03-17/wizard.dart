@@ -1,11 +1,16 @@
 import 'task_exception.dart';
 import 'wand.dart';
+import '../2025-03-18/hero.dart';
 import 'dart:math';
 
 class Wizard {
+  static const healMpCost = 10;
+  static const noMpMsg = '마나가 부족합니다';
+  static casingHealMsg(int hp) => '힐을 시전했습니다. 대상 HP: $hp';
+
   String _name;
   int _hp;
-  int _mp;
+  int _mp = 100;
   Wand? _wand;
 
   String get name => _name;
@@ -35,13 +40,21 @@ class Wizard {
     _wand = value;
   }
 
-  Wizard(String name, int hp, int mp, {Wand? wand})
+  Wizard(String name, int hp, {Wand? wand})
     : _name = name,
       _hp = max(0, hp),
-      _mp = mp,
       _wand = wand {
     _validateName(name);
-    _validateMp(mp);
+  }
+
+  void heal(Hero hero) {
+    if (mp < Wizard.healMpCost) {
+      print(Wizard.noMpMsg);
+    } else {
+      hero.hp += 20;
+      mp -= 10;
+      print(Wizard.casingHealMsg(hero.hp));
+    }
   }
 
   void _validateName(String name) {
