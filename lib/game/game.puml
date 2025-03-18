@@ -1,0 +1,17 @@
+@startuml
+
+scale 1.5
+
+class Hero {
+    String name;
+    int _age;
+
+    void attack(Slime slime)
+}
+
+class SuperHero extends Hero {
+}
+
+class Wizard extends Hero
+
+@enduml
