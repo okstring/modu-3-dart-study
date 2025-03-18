@@ -13,6 +13,6 @@ class Slime {
   void attack(Hero hero) {
     print(attackMsg(suffix));
     print(damageMsg(attackDamage));
-    hero.hp = hero.hp - attackDamage;
+    hero.hp -= attackDamage;
   }
 }

@@ -8,13 +8,14 @@ class GreatWizard extends Wizard {
 
   static superHealMsg(int hp) => '슈퍼힐을 시전했습니다. 대상 HP: $hp';
 
-  GreatWizard(super.name, super.hp, {int mp = maxMp, super.wand});
+  GreatWizard(super.name, super.hp, {super.mp = maxMp, super.wand});
 
   void superHeal(Hero hero) {
     if (mp < superHealCost) {
       print(hasNoMpMsg);
     } else {
       hero.hp = Hero.maxHp;
+      mp -= superHealCost;
       print(superHealMsg(hero.hp));
     }
   }

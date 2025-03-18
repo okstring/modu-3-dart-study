@@ -58,20 +58,19 @@ void main() {
     test('poison Count가 다 소진되면 poison 공격이 불가능하다.', () {
       final poisonSlime = PoisonSlime('-mini');
       const hp = 10000;
-      const count = 5;
+      final initialPoisonCount = poisonSlime.poisonCount;
       final hero = Hero(name: '홍길동', hp: hp);
 
-      int expectHp = hp;
-      for (int i = 0; i < count; i++) {
-        if (poisonSlime.poisonCount == 0) {
-          expectHp -= 10;
-        } else {
-          poisonSlime.attack(hero);
-          expectHp = (expectHp - Slime.attackDamage - ((expectHp - Slime.attackDamage) * 0.2).toInt());
-        }
+      for (int i = 0; i < initialPoisonCount; i++) {
+        poisonSlime.attack(hero);
       }
 
-      expect(hero.hp, expectHp);
+      final hpAfterPoisonAttacks = hero.hp;
+
+      poisonSlime.attack(hero);
+
+      expect(poisonSlime.poisonCount, 0);
+      expect(hero.hp, hpAfterPoisonAttacks - Slime.attackDamage);
     });
   });
 }

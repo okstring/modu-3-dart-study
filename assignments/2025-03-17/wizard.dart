@@ -39,14 +39,17 @@ class Wizard {
   Wand? get wand => _wand;
 
   set wand(Wand? value) {
-    _validateWand(value);
-    _wand = value;
+    if (value == null) {
+      throw TaskException.invalidWand;
+    } else {
+      wand = value;
+    }
   }
 
   Wizard(String name, int hp, {int mp = maxMp, Wand? wand})
     : _name = name,
       _hp = max(0, hp),
-      _mp = maxMp,
+      _mp = mp,
       _wand = wand {
     _validateName(name);
   }
@@ -71,13 +74,6 @@ class Wizard {
     if (mp < 0) {
       throw TaskException.invalidMp;
     }
-  }
-
-  void _validateWand(Wand? wand) {
-    if (wand == null) {
-      throw TaskException.invalidWand;
-    }
-    this.wand = wand;
   }
 }
 
