@@ -48,6 +48,7 @@ void main() {
       int expectHp = hp;
       for (int i = 0; i < count; i++) {
         poisonSlime.attack(hero);
+        // 기본 attack Damage 이후 1/5 데미지 추가
         expectHp = (expectHp - Slime.attackDamage - ((expectHp - Slime.attackDamage) * 0.2).toInt());
       }
 

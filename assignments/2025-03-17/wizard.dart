@@ -8,6 +8,7 @@ class Wizard {
   static const healAmount = 20;
   static const noMpMsg = '마나가 부족합니다';
   static const maxMp = 100;
+
   static casingHealMsg(int hp) => '힐을 시전했습니다. 대상 HP: $hp';
 
   String _name;
