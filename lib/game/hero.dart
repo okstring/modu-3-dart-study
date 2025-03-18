@@ -21,7 +21,9 @@ class Hero {
   Sword? sword; // nullable
 
   // named parameter
-  Hero({required this.name, required this.hp, this.sword});
+  Hero({required this.name, required this.hp, this.sword}) {
+    print('1번');
+  }
 
   // 메서드
   void attack() {
@@ -29,7 +31,8 @@ class Hero {
     print(topLevelName);
   }
 
-  static void run() {
+  void run() {
+    print('뛰었다');
     Hero.money = 200;
     Hero hero = Hero(name: 'name', hp: 100);
     hero.name;
