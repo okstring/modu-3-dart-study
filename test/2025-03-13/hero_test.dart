@@ -1,4 +1,4 @@
-import '../../playground/game/hero.dart';
+import '../../lib/game/hero.dart';
 import 'package:test/test.dart';
 
 void main() {
