@@ -1,20 +1,20 @@
 @startuml
 
 abstract class Asset {
-  - String name;
-  - DateTime createdDate;
-  - String manageDepart;
-  - String description;
+  + String name;
+  + DateTime createdDate;
+  + String manageDepart;
+  + String description;
   + calculateTax();
   + transact();
 }
 
 interface Thing {
-  + weight;
+  + double weight;
 }
 
 abstract class TangibleAsset extends Asset implements Thing {
-  + taxRate
+  + double taxRate;
   + int price;
   + String color;
   + DateTime purchaseDate;
@@ -23,14 +23,14 @@ abstract class TangibleAsset extends Asset implements Thing {
 }
 
 class Book extends TangibleAsset {
-  + taxRate
+  + double taxRate;
   + String isbn;
   + double weight;
   + int calculateTax();
 }
 
 class Computer extends TangibleAsset {
-  + taxRate
+  + double taxRate;
   + String makerName;
   + double weight;
 
