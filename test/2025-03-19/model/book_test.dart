@@ -2,7 +2,7 @@ import 'package:modu_3_dart_study/2025-03-19/index.dart';
 import 'package:test/test.dart';
 
 void main() {
-  group('Book Teset', () {
+  group('Book Test', () {
     late Book book;
 
     const String isbn = '가힣';

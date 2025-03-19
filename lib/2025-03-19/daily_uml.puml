@@ -32,7 +32,7 @@ class Book extends TangibleAsset {
 class Computer extends TangibleAsset {
   + taxRate
   + String makerName;
-  + double weight
+  + double weight;
 
   + int calculateTax();
 }
