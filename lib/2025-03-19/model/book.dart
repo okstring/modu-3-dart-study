@@ -3,6 +3,7 @@ import 'package:modu_3_dart_study/2025-03-19/index.dart';
 // 책
 class Book extends TangibleAsset {
   static const double taxRate = 0.11;
+
   // 책 관리 코드
   String isbn;
   double _weight;
@@ -18,15 +19,15 @@ class Book extends TangibleAsset {
     required String manageDepart,
     required String description,
   }) : _weight = weight,
-        super(
-          price,
-          color,
-          purchaseDate,
-          name,
-          createdDate,
-          manageDepart,
-          description
-      );
+       super(
+         price,
+         color,
+         purchaseDate,
+         name,
+         createdDate,
+         manageDepart,
+         description,
+       );
 
   @override
   double get weight => _weight;

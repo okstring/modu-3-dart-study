@@ -1,5 +1,3 @@
-import 'package:modu_3_dart_study/2025-03-19/index.dart';
-
 // 자산
 abstract class Asset {
   // 자산 이름
