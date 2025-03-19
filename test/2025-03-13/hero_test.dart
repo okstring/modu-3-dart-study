@@ -1,4 +1,5 @@
-import '../../lib/game/hero.dart';
+import 'package:modu_3_dart_study/game/character.dart';
+import 'package:modu_3_dart_study/game/slime.dart';
 import 'package:test/test.dart';
 
 void main() {
@@ -7,7 +8,7 @@ void main() {
     Hero hero = Hero(name: '홍길동', hp: 100);
 
     // 실행
-    hero.attack();
+    hero.attack(Slime('A'));
 
     // 검증
     expect(hero.hp, equals(95));

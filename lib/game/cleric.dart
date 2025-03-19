@@ -4,7 +4,7 @@ import 'package:modu_3_dart_study/game/slime.dart';
 
 import 'attackable.dart';
 
-class Cleric implements Attackable {
+class Cleric {
   static final int maxHp = 50;
   static final int maxMp = 10;
 

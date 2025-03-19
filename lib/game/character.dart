@@ -26,4 +26,10 @@ class Hero extends Character {
   void attack(Slime slime) {
     // TODO: implement attack
   }
+
+  void sleep() {
+    hp = 100;
+    print('$name 이 잠을 잤다.');
+  }
+
 }
