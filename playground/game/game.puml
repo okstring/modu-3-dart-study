@@ -2,7 +2,15 @@
 
 scale 1.5
 
-class Hero {
+interface Attackable {
+    {abstract} void attack(Slime slime)
+}
+
+abstract class Character {
+    void run()
+}
+
+class Hero extends Character implements Attackable, Moveable {
     String name;
     int _age;
 
@@ -12,6 +20,17 @@ class Hero {
 class SuperHero extends Hero {
 }
 
-class Wizard extends Hero
+class Wizard {
+    String name;
+    int hp;
+    int mp;
+
+    void heal(Hero hero)
+}
+
+class GreatWizard extends Wizard {
+
+    void superHeal(Hero hero)
+}
 
 @enduml

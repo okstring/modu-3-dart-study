@@ -1,4 +1,4 @@
-import '2025-03-17/encapsulation.dart';
+import '../lib/2025-03-17/encapsulation.dart';
 
 void main() {
   print('Hello world: ${calculate()}!');

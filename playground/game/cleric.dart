@@ -1,5 +1,9 @@
 import 'dart:math';
 
+import 'package:modu_3_dart_study/game/slime.dart';
+
+import 'attackable.dart';
+
 class Cleric {
   static final int maxHp = 50;
   static final int maxMp = 10;
@@ -124,5 +128,10 @@ class Cleric {
       'mp: $mp,recoveryPoints : $recoveryPoints, mpRecoveryAmount: $mpRecoveryAmount',
     );
     return mpRecoveryAmount;
+  }
+
+  @override
+  void attack(Slime slime) {
+    // TODO: implement attack
   }
 }
