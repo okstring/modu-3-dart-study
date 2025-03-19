@@ -3,7 +3,7 @@
 abstract class Asset {
   - String name;
   - DateTime createdDate;
-  - Stiring manageDepart;
+  - String manageDepart;
   - String description;
   + calculateTax();
   + transact();
@@ -13,7 +13,7 @@ interface Thing {
   + weight;
 }
 
-abstract TangibleAsset extends Asset implements Thing {
+abstract class TangibleAsset extends Asset implements Thing {
   + taxRate
   + int price;
   + String color;
@@ -39,6 +39,8 @@ class Computer extends TangibleAsset {
 
 abstract class IntangibleAsset extends Asset { }
 
-class Patent extends IntangibleAsset { }
+class Patent extends IntangibleAsset {
+  + int calculateTax()
+ }
 
 @enduml
