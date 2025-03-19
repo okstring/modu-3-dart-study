@@ -12,6 +12,17 @@ class Hero {
 class SuperHero extends Hero {
 }
 
-class Wizard extends Hero
+class Wizard {
+    String name;
+    int hp;
+    int mp;
+
+    void heal(Hero hero)
+}
+
+class GreatWizard extends Wizard {
+
+    void superHeal(Hero hero)
+}
 
 @enduml

@@ -13,6 +13,8 @@ void main() {
 
 // PascalCase
 class Hero {
+  static const int maxHp = 100;
+
   // 정적인 변수
   static int money = 100;
 
