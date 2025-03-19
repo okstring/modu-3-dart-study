@@ -39,6 +39,6 @@ class Computer extends TangibleAsset {
 
 abstract class IntangibleAsset extends Asset { }
 
-class patent extends IntangibleAsset { }
+class Patent extends IntangibleAsset { }
 
 @enduml
