@@ -1,4 +1,4 @@
-import 'package:modu_3_dart_study/game/slime.dart';
+import 'slime.dart';
 
 abstract interface class Attackable {
   // property : 메소드의 일종

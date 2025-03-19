@@ -1,13 +1,6 @@
-<<<<<<< HEAD:playground/game/hero.dart
-import '../2025-03-14/class.dart';
-=======
-import 'package:modu_3_dart_study/game/character.dart';
-import 'package:modu_3_dart_study/game/moveable.dart';
-import 'package:modu_3_dart_study/game/slime.dart';
->>>>>>> upstream/master:lib/game/hero.dart
-
-import '../2025-03-14/class.dart';
-
+import 'character.dart';
+import 'moveable.dart';
+import 'slime.dart';
 import 'attackable.dart';
 import 'sword.dart';
 

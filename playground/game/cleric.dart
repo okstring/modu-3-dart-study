@@ -1,8 +1,6 @@
 import 'dart:math';
 
-import 'package:modu_3_dart_study/game/slime.dart';
-
-import 'attackable.dart';
+import 'slime.dart';
 
 class Cleric {
   static final int maxHp = 50;

@@ -1,4 +1,4 @@
-import '../game/hero.dart';
+import 'hero.dart';
 
 class Wizard {
   static const int defaultMp = 100;
