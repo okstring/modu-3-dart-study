@@ -1,4 +1,4 @@
-import 'package:modu_3_dart_study/2025-03-14/class.dart';
+import '../2025-03-14/class.dart';
 
 import 'sword.dart';
 

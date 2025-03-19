@@ -1,4 +1,4 @@
-import 'package:modu_3_dart_study/game/hero.dart';
+import '../../playground/game/hero.dart';
 import 'package:test/test.dart';
 
 void main() {
