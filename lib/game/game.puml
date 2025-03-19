@@ -2,7 +2,15 @@
 
 scale 1.5
 
-class Hero {
+interface Attackable {
+    {abstract} void attack(Slime slime)
+}
+
+abstract class Character {
+    void run()
+}
+
+class Hero extends Character implements Attackable, Moveable {
     String name;
     int _age;
 

@@ -1,5 +1,10 @@
+import 'package:modu_3_dart_study/game/character.dart';
+import 'package:modu_3_dart_study/game/moveable.dart';
+import 'package:modu_3_dart_study/game/slime.dart';
+
 import '../2025-03-14/class.dart';
 
+import 'attackable.dart';
 import 'sword.dart';
 
 void main() {
@@ -12,7 +17,7 @@ void main() {
 }
 
 // PascalCase
-class Hero {
+class Hero extends Character implements Attackable, Moveable {
   static const int maxHp = 100;
 
   // 정적인 변수
@@ -23,15 +28,8 @@ class Hero {
   Sword? sword; // nullable
 
   // named parameter
-  Hero({required this.name, required this.hp, this.sword}) {
-    print('1번');
-  }
+  Hero({required this.name, required this.hp, this.sword}) : super(name: '', hp: 0);
 
-  // 메서드
-  void attack() {
-    hp -= 5;
-    print(topLevelName);
-  }
 
   void run() {
     print('뛰었다');
@@ -43,6 +41,16 @@ class Hero {
   void sleep() {
     hp = 100;
     print('$name 이 잠을잤다');
+  }
+
+  @override
+  void attack(Slime slime) {
+    print('공격했다');
+  }
+
+  @override
+  void move() {
+    print('3발자굴 이동');
   }
 }
 
