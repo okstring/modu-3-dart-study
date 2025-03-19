@@ -14,7 +14,7 @@ interface Thing {
 }
 
 abstract class TangibleAsset extends Asset implements Thing {
-  + double taxRate;
+  + static double taxRate;
   + int price;
   + String color;
   + DateTime purchaseDate;
@@ -23,17 +23,18 @@ abstract class TangibleAsset extends Asset implements Thing {
 }
 
 class Book extends TangibleAsset {
-  + double taxRate;
+  + static double taxRate;
   + String isbn;
-  + double weight;
+  + double get weight;
+  + set weight(double value);
   + int calculateTax();
 }
 
 class Computer extends TangibleAsset {
-  + double taxRate;
+  + static double taxRate;
   + String makerName;
-  + double weight;
-
+  + double get weight;
+  + set weight(double value);
   + int calculateTax();
 }
 
