@@ -3,6 +3,8 @@ import 'package:test/test.dart';
 
 void main() {
   group('Book Teset', () {
+    late Book book;
+
     const String isbn = '가힣';
     const double weight = 0.0;
     const int price = 100;
@@ -13,17 +15,20 @@ void main() {
     const String manageDepart = '관리부';
     const String description = '설명입니다.';
 
-    final book = Book(
-      isbn: isbn,
-      weight: weight,
-      price: price,
-      color: color,
-      purchaseDate: purchaseDate,
-      name: name,
-      createdDate: createdDate,
-      manageDepart: manageDepart,
-      description: description,
-    );
+    setUp(() {
+      book = Book(
+        isbn: isbn,
+        weight: weight,
+        price: price,
+        color: color,
+        purchaseDate: purchaseDate,
+        name: name,
+        createdDate: createdDate,
+        manageDepart: manageDepart,
+        description: description,
+      );
+    });
+
     test('인스턴스 생성 시 값이 제대로 들어가야 한다.', () {
       expect(isbn, equals(book.isbn));
       expect(weight, equals(book.weight));
@@ -44,18 +49,6 @@ void main() {
     });
 
     test('weight 값이 제대로 바뀌어야 한다', () {
-      final book = Book(
-        isbn: isbn,
-        weight: weight,
-        price: price,
-        color: color,
-        purchaseDate: purchaseDate,
-        name: name,
-        createdDate: createdDate,
-        manageDepart: manageDepart,
-        description: description,
-      );
-
       const newWeight = 150.0;
       book.weight = newWeight;
 
@@ -63,18 +56,6 @@ void main() {
     });
 
     test('세금 계산이 제대로 되어야 한다.', () {
-      final book = Book(
-        isbn: isbn,
-        weight: weight,
-        price: price,
-        color: color,
-        purchaseDate: purchaseDate,
-        name: name,
-        createdDate: createdDate,
-        manageDepart: manageDepart,
-        description: description,
-      );
-
       final tax = book.calculateTax();
 
       expect(
@@ -85,18 +66,6 @@ void main() {
     });
 
     test('감가상각비 계산이 정확해야 한다.', () {
-      final book = Book(
-        isbn: isbn,
-        weight: weight,
-        price: price,
-        color: color,
-        purchaseDate: purchaseDate,
-        name: name,
-        createdDate: createdDate,
-        manageDepart: manageDepart,
-        description: description,
-      );
-
       final depreAndAmort = book.depreAndAmort();
 
       expect(depreAndAmort, price * 0.8);
