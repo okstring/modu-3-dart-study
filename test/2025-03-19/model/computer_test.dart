@@ -41,7 +41,7 @@ void main() {
     });
 
     test('상속, 구현 단계가 올바라야 한다.', () {
-      expect(computer, isA<Book>());
+      expect(computer, isA<Computer>());
       expect(computer, isA<Thing>());
       expect(computer, isA<TangibleAsset>());
       expect(computer, isA<Asset>());

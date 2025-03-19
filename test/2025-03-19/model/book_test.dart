@@ -57,11 +57,10 @@ void main() {
 
     test('세금 계산이 제대로 되어야 한다.', () {
       final tax = book.calculateTax();
-
       expect(
         tax,
         (book.price * TangibleAsset.taxRate).toInt() +
-            (book.price * Computer.taxRate),
+            (book.price * Book.taxRate).toInt(),
       );
     });
 
