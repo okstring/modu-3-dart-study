@@ -47,7 +47,9 @@ interface Behealed { }
 
 interface Bionic { }
 
-interface Mechanic { }
+interface BeRefaired { }
+
+interface Mechanic implements BeRefaired { }
 
 interface Moveable implements Groupable {
     void move()

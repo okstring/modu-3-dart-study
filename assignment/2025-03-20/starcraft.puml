@@ -87,13 +87,15 @@ interface Productable {
 
 interface Behealed { }
 
+interface BeRefaired { }
+
 interface Barrier implements SelfHealable {
     int barrier
  }
 
 interface Bionic { }
 
-interface Mechanic { }
+interface Mechanic implements BeRefaired { }
 
 interface Moveable implements Groupable {
     void move()
