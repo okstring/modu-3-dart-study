@@ -1,0 +1,10 @@
+@startuml
+
+scale 2
+
+class Book extends TangibleAsset
+class Computer extends TangibleAsset
+
+class TangibleAsset extends Asset implements Thing
+
+@enduml
