@@ -52,7 +52,7 @@ class Hydra extends ZergUnit implements Behealed, Attackable
 ' 토스 유닛
 class Zealot extends ProtossUnit implements Behealed, Bionic, Attackable
 
-class Dragun extends ProtossUnit implements Behealed, Mechanic, Attackable
+class Dragun extends ProtossUnit implements Mechanic, Attackable
 
 ' 자원
 class Gas extends GameObject

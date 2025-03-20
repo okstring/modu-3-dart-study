@@ -21,7 +21,7 @@ abstract class ProtossStructure extends Protoss
 together {
 class Zealot extends ProtossUnit implements Behealed, Bionic, Attackable
 
-class Dragun extends ProtossUnit implements Behealed, Mechanic, Attackable
+class Dragun extends ProtossUnit implements Mechanic, Attackable
 }
 
 ' 인터페이스
