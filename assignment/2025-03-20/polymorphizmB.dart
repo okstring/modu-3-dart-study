@@ -42,6 +42,7 @@ main() {
   // 연습문제 2-1
   X obj = A();
   obj.a();
+  print('-----');
 
   // 연습문제 2-2
   Y y1 = A();
@@ -51,4 +52,15 @@ main() {
   y2.a();
   // Aa
   // Ba
+  print('-----');
+
+  // 연습문제 3
+  final A a = A();
+  final B b = B();
+  final List<Y> list = [a, b];
+
+  for (final o in list) {
+    o.b();
+  }
+  print('-----');
 }
