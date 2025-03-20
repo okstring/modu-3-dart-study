@@ -4,29 +4,44 @@
 
 ## Android Studio
 
-| 기능 설명                      | 단축키    |
-| ------------------------------ | --------- |
-| 줄 번호로 바로 이동하는 단축키 | `Cmd + L` |
-| Project 창 열기 |Cmd + 1           |
-| Project 창에서 코드 파일 열기 |Enter             |
-| Project 창 숨기기/보이기 |Cmd + Shift + F12 |
-|파일, 디렉토리 영역으로 이동|Cmd + 1|
-| 최근에 사용한 프로젝트 오픈  | `Cmd + E`      |
-| Show Context Action         | `Option + Enter`      |
-| 중괄호 전체 선택             | `Option + 방향키`     |
-| 첫 커서로 이동               | `Fn + Cmd + Shift + ←` |
-| 인덴트 자동 정렬             | `Option + Cmd + L` |
-| 다중 커서 추가               | `Shift + Option + 클릭` |
-| 위로 블록 전체 지정, 괄호 전체 블록 | `Option + ↑`          |
-| Evaluate Expression 열기(디버깅 관련) | `Option + F8`         |
-|앞에 문자 무시하고 개행|Shift + Enter|
-|import 도움 단축|Alt + Enter|
-|커밋|Cmd + k|
-|해당 줄 그대로 복사|Cmd + D|
-|제너레이터|Cmd + N|
-|코드 펼치기, 접기|Cmd + .|
-|Debug Mode Run|option + D|
-|Debug Resume|option + cmd + R|
+
+
+### 코드 편집 및 탐색 관련 단축키
+
+| 기능 설명                            | 단축키                     |
+| ------------------------------------ | -------------------------- |
+| 줄 번호로 바로 이동                  | `Cmd + L`                  |
+| 중괄호 전체 선택                     | `Option + 방향키`          |
+| 첫 커서로 이동                       | `Fn + Cmd + Shift + ←`     |
+| 인덴트 자동 정렬                     | `Option + Cmd + L`         |
+| 다중 커서 추가                       | `Shift + Option + 클릭`    |
+| 위로 블록 전체 지정, 괄호 전체 블록  | `Option + ↑`               |
+| 앞에 문자 무시하고 개행              | `Shift + Enter`            |
+| import 도움 단축                     | `Alt + Enter`              |
+| 해당 줄 그대로 복사                  | `Cmd + D`                  |
+| 코드 펼치기, 접기                    | `Cmd + .`                  |
+| 폰트 사이즈 조절                     | `Control + Shift + , or .` |
+| 여러줄 caret 방향키로 추가           | `option 두번 후 방향키`    |
+| 여러줄 블록 지정한 끝줄에 caret 추가 | Option + shift + g         |
+| 여러줄 블록 지정한 시작에 caret 추가 | Cmd + shift + 8            |
+| Show Context Action                  | `Option + Enter`           |
+
+
+
+### 프로젝트 관리 및 도구 관련 단축키
+
+| 기능 설명                             | 단축키              |
+| ------------------------------------- | ------------------- |
+| Project 창 열기                       | `Cmd + 1`           |
+| Project 창에서 코드 파일 열기         | `Enter`             |
+| Project 창 숨기기/보이기              | `Cmd + Shift + F12` |
+| 파일, 디렉토리 영역으로 이동          | `Cmd + 1`           |
+| 최근에 사용한 프로젝트 오픈           | `Cmd + E`           |
+| Evaluate Expression 열기(디버깅 관련) | `Option + F8`       |
+| 커밋                                  | `Cmd + K`           |
+| 제너레이터                            | `Cmd + N`           |
+| Debug Mode Run                        | `Option + D`        |
+| Debug Resume                          | `Option + Cmd + R`  |
 
 
 
