@@ -27,6 +27,13 @@ hero2.hp = 200;
 
 
 
+### @override - 어노테이션
+
+- 이런 것을 붙이자는 관례가 있다.
+- 없어도 동작은 한다.
+
+## 
+
 
 
 ### didset과 비슷하게 구현할 때 get, set 활용
@@ -799,6 +806,187 @@ const currentTime = DateTime.now(); // 오류: 컴파일 타임에 값을 알 �
 
 - 메모리에 자리잡은 상태
 - new 키워드를 사용하여 클래스로부터 인스턴스를 생성. Dart에서 new 키워드는 생략 가능
+
+
+
+## 다형성(polymorphism)
+
+- 어떤 것을 이렇게도 부를 수 있고, 저렇게도 부를 수 있는 것
+- 핸들이 있고, 오른 페달이 액셀, 왼쪽이 브레이크인 것 = 차, 그랜저, 버스 …
+  **세부적인 부분 부분은 다르지만, 어쨌든 대충 보면 그냥 차다**
+- 비슷한 얘들끼리 묶는 느낌
+
+
+
+### Switch case 문 - 타입 확인하기
+
+```dart
+final Drawable drawable = elements[i];
+
+switch (drawable) {
+    case Rectangle():
+        print('사각형이 선택됨');
+        break;
+    case House():
+        print('집이 선택됨');
+        break;
+    case Dog():
+        print('강아지가 선택됨');
+        break;
+}
+
+drawable.draw(); // 다형성: 실제 타입의 draw() 메서드 호출
+```
+
+
+
+### 알쏭달쏭 다형성 문제
+
+```dart
+abstract class Monster {
+  void run() {
+    print('몬스터빔');
+  }
+}
+
+class Slime extends Monster {
+  int hp = 50;
+  final String suffix;
+
+  Slime(this.suffix);
+
+  @override
+  void run() {
+    print('슬라임$suffix가 도망간다.');
+  }
+}
+
+void main(List<String> arguments) {
+  Slime slime = Slime('A');
+  Monster monster = Slime('B');
+  slime.run();
+  monster.run();
+}
+
+// 슬라임A가 도망간다.
+// 슬라임B가 도망간다.
+```
+
+- 타입 명시보다 실체가 중요하다.
+- `@override` 를 했기 때문에 `slime.run()`이 실행된다
+
+
+
+
+
+### Dart의 `is`와 `as` 키워드
+
+#### `is` 연산자
+
+```dart
+class Animal {}
+class Dog extends Animal {}
+class Cat extends Animal {}
+
+void main() {
+  // 상속 관계 체크
+  Dog dog = Dog();
+  Cat cat = Cat();
+  
+  print(dog is Animal);    // true (Dog는 Animal의 하위 클래스)
+  print(cat is Animal);    // true (Cat은 Animal의 하위 클래스)
+  print(dog is Cat);       // false (Dog는 Cat이 아님)
+}
+```
+
+#### `as` 연산자
+
+- 형변환(타입 캐스팅)에 사용
+
+```dart
+void main() {
+  // 업캐스팅 (하위 클래스 -> 상위 클래스)
+  Dog dog = Dog();
+  Animal animal = dog as Animal; // Dog를 Animal로 캐스팅
+  animal.makeSound();           // "멍멍!" 출력
+  
+  // 다운캐스팅 (상위 클래스 -> 하위 클래스)
+  Animal someAnimal = Dog();
+  Dog someDog = someAnimal as Dog; // 가능: someAnimal은 실제로 Dog 객체
+  someDog.fetch();                // "공 가져오기!" 출력
+  
+  // 잘못된 캐스팅
+  try {
+    Animal anotherAnimal = Cat();
+    Dog anotherDog = anotherAnimal as Dog; // 예외 발생: Cat은 Dog로 캐스팅할 수 없음
+  } catch (e) {
+    print('캐스팅 오류: $e');
+  }
+  
+  // is와 as를 함께 사용한 안전한 캐스팅
+  Animal thirdAnimal = Cat();
+  if (thirdAnimal is Dog) {
+    (thirdAnimal as Dog).fetch(); // is 검사를 통과했으므로 안전하게 캐스팅 가능
+  } else {
+    print('이 동물은 개가 아닙니다!');  // 이 부분이 실행됨
+  }
+}
+
+class Animal {
+  void makeSound() {
+    print('동물 소리!');
+  }
+}
+
+class Dog extends Animal {
+  @override
+  void makeSound() {
+    print('멍멍!');
+  }
+  
+  void fetch() {
+    print('공 가져오기!');
+  }
+}
+
+class Cat extends Animal {
+  @override
+  void makeSound() {
+    print('야옹!');
+  }
+  
+  void climb() {
+    print('나무 오르기!');
+  }
+}
+```
+
+#### is와 as의 차이점
+
+1. **목적**:
+   - `is`: 객체가 특정 타입인지 확인 (타입 체크)
+   - `as`: 객체를 다른 타입으로 변환 (타입 캐스팅)
+2. **반환 값**:
+   - `is`: 불리언 값 (true/false)
+   - `as`: 캐스팅된 객체
+3. **안전성**:
+   - `is`: 항상 안전함 (단순 체크)
+   - `as`: 부적절한 캐스팅 시 예외 발생 가능
+
+
+
+#### 안전한 캐스팅 패턴
+
+안전한 다운캐스팅을 위해 `is`와 `as`를 함께 사용하는 패턴:
+
+```dart
+if (object is TargetType) {
+  // 이미 타입 체크를 했으므로 안전
+  TargetType castedObject = object as TargetType;
+  // 또는 Dart에서는 스마트 캐스트 기능이 있어 다음과 같이 작성 가능
+  object.targetTypeMethod();  // object가 이미 TargetType으로 취급됨
+}
+```
 
 
 

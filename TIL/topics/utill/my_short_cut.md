@@ -25,6 +25,7 @@
 | 여러줄 블록 지정한 끝줄에 caret 추가 | Option + shift + g         |
 | 여러줄 블록 지정한 시작에 caret 추가 | Cmd + shift + 8            |
 | Show Context Action                  | `Option + Enter`           |
+| 최근 파일 목록 보이기                | cmd + e                    |
 
 
 
@@ -42,6 +43,8 @@
 | 제너레이터                            | `Cmd + N`           |
 | Debug Mode Run                        | `Option + D`        |
 | Debug Resume                          | `Option + Cmd + R`  |
+| 최근 파일 목록 보이기                 | cmd + e             |
+| Run 콘솔 올리기 내리기                | Cmd + 4             |
 
 
 
@@ -164,3 +167,7 @@
 
 - VS code에서 바꾸면 깔끔하게 바뀐다.
   - refactor 활용
+
+### 액션 단축키 입력 시 터미널 man페이지 열리는 것 비활성화
+
+![image-20250320110812101](/Users/okstring/Library/Application Support/typora-user-images/image-20250320110812101.png)
