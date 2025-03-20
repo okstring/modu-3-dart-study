@@ -56,7 +56,7 @@ interface Moveable implements Groupable {
 interface Groupable { }
 
 interface Productable {
-    TerranUnit produce(Minerals minerals Gas gas)
+    TerranUnit produce(Minerals minerals, Gas gas)
 }
 
 GameObject -[hidden]-> Terran
