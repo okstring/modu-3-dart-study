@@ -4,7 +4,7 @@ import 'package:modu_3_dart_study/game/slime.dart';
 
 import 'attackable.dart';
 
-class Cleric {
+class Cleric implements Comparable<Cleric> {
   static final int maxHp = 50;
   static final int maxMp = 10;
 
@@ -133,5 +133,42 @@ class Cleric {
   @override
   void attack(Slime slime) {
     // TODO: implement attack
+  }
+
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is Cleric &&
+          runtimeType == other.runtimeType &&
+          name == other.name &&
+          hp == other.hp;
+
+  @override
+  int get hashCode => name.hashCode ^ hp.hashCode;
+
+  // @override
+  // int get hashCode => name.hashCode ^ hp.hashCode ^ mp.hashCode;
+  //
+  // @override
+  // bool operator ==(Object other) {
+  //   if (identical(this, other)) {
+  //     return true;
+  //   }
+  //
+  //   if (runtimeType != other.runtimeType) {
+  //     return false;
+  //   }
+  //   return name == (other as Cleric).name && hp == other.hp && mp == other.mp;
+  // }
+
+  @override
+  String toString() {
+    return 'Cleric{name: $name, hp: $hp, mp: $mp}';
+  }
+
+  @override
+  int compareTo(Cleric other) {
+    return name.compareTo(other.name);
   }
 }

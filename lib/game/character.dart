@@ -32,4 +32,8 @@ class Hero extends Character {
     print('$name 이 잠을 잤다.');
   }
 
+  @override
+  String toString() {
+    return 'Hero{}';
+  }
 }
