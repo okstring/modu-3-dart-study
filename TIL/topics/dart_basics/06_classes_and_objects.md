@@ -1076,7 +1076,8 @@ void main() {
 `external bool operator ==(Object other);`
 
 - 동등성 비교시 사용 됨
-- `identical` 
+
+### identical
   - 실제로 메모리 주소가 같은지(두 객체 참조가 동일한지) 알아보는 내장 함수
 
 
@@ -1086,8 +1087,6 @@ void main() {
 #### Hashcode 로직 안에서 XOR 사용하는 이유
 
 숫자 연산에서 가장 빠른게 비트 연산이기 때문
-
-#### 알쏭달쏭 Hashcode
 
 
 
@@ -1132,17 +1131,18 @@ names.sort((a, b) => a.compareTo(b) * -1);
 
 #### 깊은 복사
 
-String, int 등 원시타입은 깊은복사
+- 객체의 참조값만 복사하여 원본과 복사본이 같은 메모리 주소를 가리키는 복사 방식
+- String, int 등 원시타입은 깊은복사
 
 #### 얕은 복사
 
+- 객체의 모든 값과 내부 객체까지 완전히 새로운 메모리에 복사하여 원본과 복사본이 서로 독립적인 복사 방식
 
 
 
+## 알쏭달쏭 얕은 복사, 깊은 복사 예시
 
-#### 알쏭달쏭 얕은 복사, 깊은 복사 예시
-
-##### 중첩리스트에서 복사
+### 중첩리스트에서 복사
 
 ```dart
 // 중첩 리스트에서의 복사
@@ -1162,5 +1162,76 @@ print(copy2);   // [[77, 2], [3, 4]]
 
 
 
-#### 
+### 얕은 복사, 깊은 복사, hashCode
+
+```dart
+class Address {
+  String street;
+
+  Address(this.street);
+}
+
+class Person {
+  String name;
+  final int age;
+  final Address address;
+  List<String> hobbies;
+
+  Person({required this.name, required this.age, required this.address, required this.hobbies});
+
+  Person copyWith({String? name, int? age, Address? address, List<String>? hobbies}) {
+    return Person(
+      name: name ?? this.name,
+      age: age ?? this.age,
+      address: address ?? this.address,
+      hobbies: hobbies ?? this.hobbies,
+    );
+  }
+
+  Person deepCopy() {
+    return Person(
+      name: name,
+      age: age,
+      address: Address(address.street), // 새 Address 인스턴스
+      hobbies: List.from(hobbies), // 리스트 깊은 복사
+    );
+  }
+}
+
+
+void main() {
+  final person1 = Person(name: '김', age: 10, address: Address('오산시'), hobbies: []);
+  final person2 = person1.copyWith(address: Address('오산시'), hobbies: []);
+
+  print(identical(person1, person2)); // false - 다른 인스턴스
+  print(identical(person1.address, person2.address)); // false - 다른 인스턴스
+
+  person1.address.street = '서울시';
+  print(person2.address.street); // 오산시 - 다른 인스턴스
+
+  person1.name = '박';
+  print(person2.name); // 김 - 다른 인스턴스
+
+  print([person1.hashCode, person2.hashCode]); // 해시 코드 다름 - 다른 인스턴스
+  print(person1 == person2); // false - 다른 인스턴스
+  print(identical(person1, person2)); // false - 주소 값 다름
+
+  print('------------------');
+
+  final person3 = Person(name: '천', age: 20, address: Address('강원시'), hobbies: ['sing', 'read']);
+  final person4 = person3.copyWith(name: '안'); // 얕은 복사
+  final person5 = person3.deepCopy();
+
+  print(identical(person3.address, person4.address)); // true - ‼️ Address는 같은 객체 사용, 인스턴스 새로 생성 등 유의
+  print(identical(person3.address.street, person4.address.street)); // true - ‼️ Address는 같은 객체 사용, 인스턴스 새로 생성 등 유의
+
+
+  person3.hobbies.add('talk');
+  print(person4.hobbies.length); // 3 - ‼️ 원본 변경이 리스트에 영향
+  print(person5.hobbies.length); // 2 - deepCopy는 원본에 영향 안받음
+}
+
+```
+
+
 
