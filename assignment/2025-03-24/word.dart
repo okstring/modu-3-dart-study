@@ -25,7 +25,7 @@ class Word {
   bool isConsonant(int index) {
     final character = _getCharacter(index);
 
-    if (_isAlphabel(character)) {
+    if (_isAlphabet(character)) {
       return !isVowel(index);
     } else {
       throw TaskException.invalidCharacter;
@@ -43,7 +43,7 @@ class Word {
     return i < 0 || i >= word.length;
   }
 
-  bool _isAlphabel(String character) {
+  bool _isAlphabet(String character) {
     final codeUnit = character.codeUnits[0];
     return ((codeUnit >= 65 && codeUnit <= 90) ||
         (codeUnit >= 97 && codeUnit <= 122));
