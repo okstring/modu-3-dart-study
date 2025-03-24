@@ -19,16 +19,22 @@ void main() {
       final word = Word(word: rowWord);
       final index = rowWord.length;
 
-      expect(() {
-        word.isVowel(index);
-      } , throwsA((e) => e is CustomException && e.message == TaskException.invalidIndex.message));
+      expect(
+        () {
+          word.isVowel(index);
+        },
+        throwsA(
+          (e) =>
+              e is CustomException &&
+              e.message == TaskException.invalidIndex.message,
+        ),
+      );
     });
 
     test('consonant를 정확히 판별해야 한다.', () {
       Set<String> consonent = {};
       const index = 0;
       final vowels = {'a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'};
-
       for (int i = 65, j = 97; i <= 90; i++, j++) {
         final lowerCharactor = String.fromCharCode(i);
         final upperCharactor = String.fromCharCode(j);
@@ -51,18 +57,32 @@ void main() {
       final word = Word(word: rowWord);
       final index = rowWord.length;
 
-      expect(() {
-        word.isConsonant(index);
-      } , throwsA((e) => e is CustomException && e.message == TaskException.invalidIndex.message));
+      expect(
+        () {
+          word.isConsonant(index);
+        },
+        throwsA(
+          (e) =>
+              e is CustomException &&
+              e.message == TaskException.invalidIndex.message,
+        ),
+      );
     });
 
     test('consonant 판별 시 알파벳이 아니면 TaskException.invalidCharactor를 던진다.', () {
       const rowWord = '!';
       final word = Word(word: rowWord);
 
-      expect(() {
-        word.isConsonant(0);
-      } , throwsA((e) => e is CustomException && e.message == TaskException.invalidCharactor.message));
+      expect(
+        () {
+          word.isConsonant(0);
+        },
+        throwsA(
+          (e) =>
+              e is CustomException &&
+              e.message == TaskException.invalidCharactor.message,
+        ),
+      );
     });
   });
 }
