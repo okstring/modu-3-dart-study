@@ -3,10 +3,9 @@ class StrongBox<E> {
   KeyType type;
   int _openCount;
 
-  StrongBox({
-    required this.type,
-    required E? data,
-  }) : _data = data, _openCount = 0;
+  StrongBox({required this.type, required E? data})
+    : _data = data,
+      _openCount = 0;
 
   void put(E data) {
     _data = data;
