@@ -31,12 +31,17 @@ class Word {
     }
 
     final character = word[i];
-    final codeUnit = character.codeUnits[0];
-    if ((codeUnit >= 65 && codeUnit <= 90) ||
-        (codeUnit >= 97 && codeUnit <= 122)) {
+
+    if (_isAlphabel(character)) {
       return !isVowel(i);
     } else {
       throw TaskException.invalidCharactor;
     }
+  }
+
+  bool _isAlphabel(String character) {
+    final codeUnit = character.codeUnits[0];
+    return ((codeUnit >= 65 && codeUnit <= 90) ||
+        (codeUnit >= 97 && codeUnit <= 122));
   }
 }

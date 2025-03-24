@@ -20,11 +20,11 @@ void main() {
       'Key Type의 각각 시도 횟수 한도는 padlock: 1_024, button: 10_000, dial: 30_000, finger: 1_000_000이다',
       () {
         const types = KeyType.values;
-        final limitByType = types.map((e) => e.openCountLimit);
+        final limitByTypes = types.map((e) => e.openCountLimit);
 
         const correctLimitByType = [1_024, 10_000, 30_000, 1_000_000];
 
-        expect(limitByType, correctLimitByType);
+        expect(limitByTypes, correctLimitByType);
       },
     );
   });
