@@ -17,11 +17,11 @@ class Word {
 
   Word({required this.word});
 
-  bool isVowel(int i) {
-    if (i < 0 || i >= word.length) {
+  bool isVowel(int index) {
+    if (index < 0 || index >= word.length) {
       throw TaskException.invalidIndex;
     } else {
-      return vowels.contains(word[i]);
+      return vowels.contains(word[index]);
     }
   }
 
@@ -32,8 +32,7 @@ class Word {
 
     final character = word[i];
     final codeUnit = character.codeUnits[0];
-
-    if (codeUnit >= 65 && codeUnit <= 90 && codeUnit >= 97 && codeUnit <= 122) {
+    if ((codeUnit >= 65 && codeUnit <= 90) || (codeUnit >= 97 && codeUnit <= 122)) {
       return !isVowel(i);
     } else {
       throw TaskException.invalidCharactor;
