@@ -18,25 +18,25 @@ class Word {
   Word({required this.word});
 
   bool isVowel(int index) {
-    if (_isOutOfRange(index)) {
-      throw TaskException.invalidIndex;
-    } else {
-      return vowels.contains(word[index]);
-    }
+    final character = _getCharacter(index);
+    return vowels.contains(character);
   }
 
   bool isConsonant(int index) {
-    if (_isOutOfRange(index)) {
-      throw TaskException.invalidIndex;
-    }
-
-    final character = word[index];
+    final character = _getCharacter(index);
 
     if (_isAlphabel(character)) {
       return !isVowel(index);
     } else {
       throw TaskException.invalidCharacter;
     }
+  }
+
+  String _getCharacter(int index) {
+    if (_isOutOfRange(index)) {
+      throw TaskException.invalidIndex;
+    }
+    return word[index];
   }
 
   bool _isOutOfRange(int i) {
