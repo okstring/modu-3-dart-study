@@ -4,14 +4,14 @@ import 'package:test/test.dart';
 void main() {
   group('Word 테스트', () {
     test('vowel을 정확히 판별해야 한다.', () {
-      const rowWord = 'Hello';
-      final word = Word(word: rowWord);
+      const rawWord = 'Hello';
+      final word = Word(word: rawWord);
       final vowels = {'a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'};
       final index = 1;
 
       final isVowel = word.isVowel(index);
 
-      expect(vowels.contains(rowWord[index]), isVowel);
+      expect(vowels.contains(rawWord[index]), isVowel);
     });
 
     test('vowel 판별 시 index에 벗어나면 TaskException.invalidIndex를 던진다.', () {
@@ -32,21 +32,21 @@ void main() {
     });
 
     test('consonant를 정확히 판별해야 한다.', () {
-      Set<String> consonent = {};
+      Set<String> consonant = {};
       const index = 0;
       final vowels = {'a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'};
       for (int i = 65, j = 97; i <= 90; i++, j++) {
         final lowerCharactor = String.fromCharCode(i);
         final upperCharactor = String.fromCharCode(j);
         if (!vowels.contains(lowerCharactor)) {
-          consonent.add(lowerCharactor);
+          consonant.add(lowerCharactor);
         }
         if (!vowels.contains(upperCharactor)) {
-          consonent.add(upperCharactor);
+          consonant.add(upperCharactor);
         }
       }
 
-      for (final charactor in consonent) {
+      for (final charactor in consonant) {
         final word = Word(word: charactor);
         expect(word.isConsonant(index), isTrue);
       }
@@ -80,7 +80,7 @@ void main() {
         throwsA(
           (e) =>
               e is CustomException &&
-              e.message == TaskException.invalidCharactor.message,
+              e.message == TaskException.invalidCharacter.message,
         ),
       );
     });

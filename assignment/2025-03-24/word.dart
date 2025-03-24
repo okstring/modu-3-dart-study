@@ -35,7 +35,7 @@ class Word {
     if (_isAlphabel(character)) {
       return !isVowel(index);
     } else {
-      throw TaskException.invalidCharactor;
+      throw TaskException.invalidCharacter;
     }
   }
 
