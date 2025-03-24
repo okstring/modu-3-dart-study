@@ -1,4 +1,4 @@
-import 'task_exception.dart';
+import 'index.dart';
 
 class Word {
   static final Set<String> vowels = <String>{
