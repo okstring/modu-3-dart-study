@@ -22,14 +22,4 @@ class Wizard {
 
     print('힐을 시전했습니다. 대상 HP: ${hero.hp}');
   }
-
-  Wizard.fromJson(Map<String, dynamic> json)
-    : name = json['name'],
-      hp = json['hp'],
-      mp = json['mp'];
-
-  Map<String, dynamic> toJson() {
-    return {'name': name, 'hp': hp, 'mp': mp};
-  }
-
 }
