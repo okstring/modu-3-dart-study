@@ -6,9 +6,9 @@ void main() {
   group('DefaultFileOperations 테스트', () {
     final defaultFileOperations = DefaultFileOperations();
     const sourcePath =
-        '/Users/okstring/Documents/flutter/modu-3-dart-study/assignment/2025-03-25/my_file.txt';
+        'assignment/2025-03-25/my_file.txt';
     const targetPath =
-        '/Users/okstring/Documents/flutter/modu-3-dart-study/assignment/2025-03-25/copy/my_file.txt';
+        'assignment/2025-03-25/copy/my_file.txt';
     const contents = 'Hello World!';
 
     setUp(() {

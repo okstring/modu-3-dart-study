@@ -8,7 +8,7 @@ void main() {
   group('Department 테스트', () {
     final defaultFileOperations = DefaultFileOperations();
     const targetPath =
-        '/Users/okstring/Documents/flutter/modu-3-dart-study/assignment/2025-03-25/company.txt';
+        'assignment/2025-03-25/company.txt';
 
     test(
       'department를 인스턴스화하고 직렬화해서 company.txt에 저장해야 한다. 이후 제목과 내용, 객체가 같아야한다.',
