@@ -1,3 +1,5 @@
+export 'dart:io';
+
 export 'default_file_operations.dart';
 export 'department.dart';
 export 'employee.dart';
