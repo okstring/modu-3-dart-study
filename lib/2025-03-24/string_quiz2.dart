@@ -28,6 +28,7 @@ class Rectangle {
   Rectangle(this.x, this.y, this.width, this.height);
 
   void translate(int dx, int dy) {
+
     x += dx;
     y += dy;
   }
