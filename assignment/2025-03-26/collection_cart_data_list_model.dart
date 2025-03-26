@@ -17,14 +17,4 @@ class CollectionChartDataListModel {
     'collectionChartDataList':
         collectionChartDataList.map((e) => e.toJson()).toList(),
   };
-
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is CollectionChartDataListModel &&
-          runtimeType == other.runtimeType &&
-          collectionChartDataList == other.collectionChartDataList;
-
-  @override
-  int get hashCode => collectionChartDataList.hashCode;
 }
