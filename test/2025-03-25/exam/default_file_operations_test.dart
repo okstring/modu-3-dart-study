@@ -19,14 +19,14 @@ void main() {
     file.writeAsStringSync(content);
   });
 
-  test('파일 복사 성공', () {
+  test('존재하지 않는 파일 복사 시 예외 발생', () {
     fileOperations.copy(sourcePath, targetPath);
 
     final File targetFile = File(targetPath);
     expect(targetFile.readAsStringSync() == content, isTrue);
   });
 
-  test('파일 복사 성공', () {
+  test('존재하지 않는 파일 복사 시 예외 발생', () {
     expect(() => fileOperations.copy('123123', targetPath), throwsException);
   });
 

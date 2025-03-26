@@ -12,7 +12,7 @@ class CollectionSalePrice {
 
   Map<String, dynamic> toJson() => {
     'price': price,
-    'cvtDatetime': DateFormat('yyyy-MM-ddThh:mm:ss').format(cvtDatetime),
+    'cvtDatetime': cvtDatetime.toIso8601String(),
   };
 
   @override

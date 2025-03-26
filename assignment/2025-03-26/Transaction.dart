@@ -61,7 +61,7 @@ main() {
   // 4. 모든 거래자의 이름을 알파벳순으로 정렬하여 나열하시오
   print('4. 모든 거래자의 이름을 알파벳순으로 정렬하여 나열하시오');
   transactions.map((e) => e.trader).toList()
-    ..sort((p, e) => e.name.compareTo(e.name))
+    ..sort((p, e) => p.name.compareTo(e.name))
     ..forEach(print);
   print('-----------');
 

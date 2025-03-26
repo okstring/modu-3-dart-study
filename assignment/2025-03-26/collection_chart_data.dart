@@ -1,3 +1,5 @@
+import 'package:collection/collection.dart';
+
 import 'index.dart';
 
 class CollectionChartData {
@@ -12,7 +14,7 @@ class CollectionChartData {
   CollectionChartData.fromJson(Map<String, dynamic> json)
     : collectionName = json['collectionName'] as String,
       collectionSalePrice =
-          json['collectionSalePrice'] == null
+          json['collectionSalePrice'] != null
               ? (json['collectionSalePrice'] as List?)
                   ?.map(
                     (e) =>
@@ -32,7 +34,7 @@ class CollectionChartData {
       other is CollectionChartData &&
           runtimeType == other.runtimeType &&
           collectionName == other.collectionName &&
-          collectionSalePrice == other.collectionSalePrice;
+          ListEquality().equals(collectionSalePrice, other.collectionSalePrice);
 
   @override
   int get hashCode => collectionName.hashCode ^ collectionSalePrice.hashCode;
