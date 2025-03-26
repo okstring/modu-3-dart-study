@@ -6,11 +6,8 @@ class CollectionChartDataListModel {
   CollectionChartDataListModel({required this.collectionChartDataList});
 
   CollectionChartDataListModel.fromJson(Map<String, dynamic> json)
-    : collectionChartDataList =
-          (json['collectionChartDataList'] as List)
-              .map(
-                (e) => CollectionChartData.fromJson(e as Map<String, dynamic>),
-              )
+    : collectionChartDataList = (json['collectionChartDataList'] as List)
+              .map((e) => CollectionChartData.fromJson(e as Map<String, dynamic>))
               .toList();
 
   Map<String, dynamic> toJson() => {

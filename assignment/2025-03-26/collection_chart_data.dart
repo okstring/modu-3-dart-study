@@ -13,15 +13,11 @@ class CollectionChartData {
 
   CollectionChartData.fromJson(Map<String, dynamic> json)
     : collectionName = json['collectionName'] as String,
-      collectionSalePrice =
-          json['collectionSalePrice'] != null
+      collectionSalePrice = json['collectionSalePrice'] != null
               ? (json['collectionSalePrice'] as List?)
-                  ?.map(
-                    (e) =>
-                        CollectionSalePrice.fromJson(e as Map<String, dynamic>),
-                  )
-                  .toList()
-              : null;
+          ?.map((e) => CollectionSalePrice.fromJson(e as Map<String, dynamic>))
+          .toList()
+          : null;
 
   Map<String, dynamic> toJson() => {
     'collectionName': collectionName,

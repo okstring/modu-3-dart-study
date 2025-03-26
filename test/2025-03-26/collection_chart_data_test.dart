@@ -17,15 +17,13 @@ void main() {
       final json = jsonDecode(jsonString);
       final model = CollectionChartDataListModel.fromJson(json);
 
-      // 다시 직렬화
+      // 테스트 위한 다시 직렬화
       final serializationJson = model.toJson();
       final serializationJsonString = jsonEncode(serializationJson);
 
-      // 테스트 위한 역직렬화
+      // 테스트 위한 다시 역직렬화
       final deserializationJson = jsonDecode(serializationJsonString);
-      final deserializationModel = CollectionChartDataListModel.fromJson(
-        deserializationJson,
-      );
+      final deserializationModel = CollectionChartDataListModel.fromJson(deserializationJson);
 
       // 리스트 비교
       final eq = ListEquality();
