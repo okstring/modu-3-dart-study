@@ -72,7 +72,10 @@ main() {
 
   // 6. 케임브리지에 거주하는 거래자의 모든 트랙잭션값을 출력하시오
   print('6. 케임브리지에 거주하는 거래자의 모든 트랙잭션값을 출력하시오');
-  transactions.where((e) => e.trader.city == 'Cambridge').forEach(print);
+  transactions
+      .where((e) => e.trader.city == 'Cambridge')
+      .map((e) => e.value)
+      .forEach(print);
   print('-----------');
 
   // 7. 전체 트랜잭션 중 최대값은 얼마인가?
