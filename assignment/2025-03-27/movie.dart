@@ -32,7 +32,6 @@ class Movie {
 }
 
 Future<Movie> getMovieInfo() async {
-  // TODO: 2초동안 기다리는 코드 작성
   await Future.delayed(const Duration(seconds: 2));
   final String jsonString = '''
   {
