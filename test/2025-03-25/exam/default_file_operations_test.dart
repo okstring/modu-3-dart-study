@@ -14,26 +14,35 @@ void main() {
 
   final FileOperations fileOperations = DefaultFileOperations();
 
-  setUp(() {
+  // 한번
+  setUpAll(() async {
     // 테스트용 파일 작성
-    file.writeAsStringSync(content);
+    await file.writeAsString(content);
   });
 
-  test('파일 복사 성공', () {
-    fileOperations.copy(sourcePath, targetPath);
+  // 매번
+  setUp(() async {
+  });
+
+  test('파일 복사 성공', () async {
+    await fileOperations.copy(sourcePath, targetPath);
 
     final File targetFile = File(targetPath);
-    expect(targetFile.readAsStringSync() == content, isTrue);
+    expect(await targetFile.readAsString() == content, isTrue);
   });
 
-  test('파일 복사 성공', () {
-    expect(() => fileOperations.copy('123123', targetPath), throwsException);
+  test('파일 복사 성공', () async {
+    expect(() async => await fileOperations.copy('123123', targetPath), throwsException);
   });
 
   // 테스트 끝나고 수행되어야 하는 코드
-  tearDown(() {
+  tearDown(() async {
+  });
+
+  // 끝날 때 한 번
+  tearDownAll(() async {
     // 테스트용 파일 삭제
-    file.deleteSync();
-    File(targetPath).deleteSync();
+    await file.delete();
+    await File(targetPath).delete();
   });
 }

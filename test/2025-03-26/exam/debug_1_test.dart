@@ -1004,6 +1004,8 @@ void main() {
       ]
     };
 
+    print(((json['collectionChartDataList'] as List)[0]['collectionSalePrice'] as List)[0]['price']);
+
     final response = ChartDataResponse.fromJson(json);
 
     expect(response, isA<ChartDataResponse>());
