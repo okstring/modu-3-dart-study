@@ -1,11 +1,15 @@
 abstract class Bird {
-  void tweetSound();
-  Future<dynamic> clearanceDuration();
+  int get delay;
+  String get tweetSound;
+
+  Future<dynamic> _clearanceDuration() async {
+    await Future.delayed(Duration(seconds: delay));
+  }
 
   Future<void> tweet(int count) async {
     for (int i = 0; i < count; i++) {
-      tweetSound();
-      await clearanceDuration();
+      print(tweetSound);
+      await _clearanceDuration();
     }
   }
 }

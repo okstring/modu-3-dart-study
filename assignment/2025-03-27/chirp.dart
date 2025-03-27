@@ -2,8 +2,8 @@ import 'index.dart';
 
 class Chirp extends Bird {
   @override
-  void tweetSound() => print('🦜짹짹~');
+  int get delay => 3;
 
   @override
-  Future<dynamic> clearanceDuration() async => await Future.delayed(Duration(seconds: 3));
+  String get tweetSound => '🦜짹짹~';
 }

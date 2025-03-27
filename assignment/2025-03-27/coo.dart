@@ -2,8 +2,8 @@ import 'index.dart';
 
 class Coo extends Bird {
   @override
-  void tweetSound() => print('🕊️꾸우~');
+  int get delay => 1;
 
   @override
-  Future<dynamic> clearanceDuration() async => await Future.delayed(Duration(seconds: 1));
+  String get tweetSound => '🕊️꾸우~';
 }
