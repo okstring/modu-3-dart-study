@@ -29,15 +29,12 @@ void main() {
 
   test('getMovieInfo() 실행 시 딜레이가 2초 이상 걸려야 합니다.', () async {
     final stopwatch = Stopwatch()..start();
-    final beforeTime = DateTime.now();
+    const delay = 2;
 
     final _ = await getMovieInfo();
-
     final timerTime = stopwatch.elapsed.inSeconds;
-    final afterTime = DateTime.now();
-    final diffTime = afterTime.difference(beforeTime).inSeconds;
 
-    expect(timerTime, greaterThanOrEqualTo(diffTime));
+    expect(timerTime, greaterThanOrEqualTo(delay));
   });
   });
 }
