@@ -1,7 +1,5 @@
 import 'dart:math';
 
-import 'package:collection/collection.dart';
-
 class Trader {
   String name;
   String city;
@@ -42,7 +40,8 @@ main() {
   transactions.where((e) => e.year == 2011).toList()
     ..sort((p, e) => p.value.compareTo(e.value))
     ..map((e) => e.trader.name)
-    ..forEach(print);
+    .toList()
+    .forEach(print);
   print('-----------');
 
   // 2. 거래자가 근무하는 모든 도시를 중복 없이 나열하시오
@@ -55,14 +54,17 @@ main() {
   transactions.where((e) => e.trader.city == "Cambridge").toList()
     ..sort((p, e) => p.trader.name.compareTo(e.trader.name))
     ..map((e) => e.trader)
-    ..forEach(print);
+    .toList()
+    .forEach(print);
   print('-----------');
 
   // 4. 모든 거래자의 이름을 알파벳순으로 정렬하여 나열하시오
   print('4. 모든 거래자의 이름을 알파벳순으로 정렬하여 나열하시오');
   transactions.map((e) => e.trader).toList()
     ..sort((p, e) => p.name.compareTo(e.name))
-    ..forEach(print);
+    ..map((e) => e.name)
+    .toList()
+    .forEach(print);
   print('-----------');
 
   // 5. 밀라노에 거래자가 있는가?
