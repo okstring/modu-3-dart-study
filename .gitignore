@@ -178,6 +178,7 @@ fabric.properties
 
 # raw folder
 TIL/00_raw/
+placeholder/
 
 # template
 TIL/daily/PR_template.md
