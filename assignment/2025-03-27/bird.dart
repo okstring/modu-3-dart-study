@@ -2,7 +2,7 @@ abstract class Bird {
   int get delay;
   String get tweetSound;
 
-  Future<dynamic> _clearanceDuration() async {
+  Future<void> _clearanceDuration() async {
     await Future.delayed(Duration(seconds: delay));
   }
 
