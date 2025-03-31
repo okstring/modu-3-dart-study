@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:collection/collection.dart';
 import 'package:test/test.dart';
 
 import '../../assignment/2025-03-31/user.dart';
@@ -15,10 +16,10 @@ void main() {
 
       final json = users.map((e) => e.toJson()).toList();
       final jsonString = jsonEncode(json);
-      final List<dynamic> serializationJson = jsonDecode(jsonString);
-      final List<User> serializationTodos = serializationJson.map((e) => User.fromJson(e)).toList();
+      final List<dynamic> deserializationJson = jsonDecode(jsonString);
+      final List<User> deserializationTodos = deserializationJson.map((e) => User.fromJson(e)).toList();
 
-      expect(users, equals(serializationTodos));
+      expect(ListEquality().equals(users, deserializationTodos), isTrue);
     });
   });
 }

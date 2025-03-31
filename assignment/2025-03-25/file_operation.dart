@@ -6,4 +6,6 @@ abstract interface class FileOperation {
   String read(String targetPath);
 
   Future<String> readAsync(String targetPath);
+
+  Future<List<String>> readAsLinesAsync(String targetPath);
 }

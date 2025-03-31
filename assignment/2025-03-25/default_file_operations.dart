@@ -21,8 +21,14 @@ class DefaultFileOperations implements FileOperation {
   }
 
   @override
-  Future<String> readAsync(String targetPath) {
+  Future<String> readAsync(String targetPath) async {
     final file = File(targetPath);
-    return file.readAsString();
+    return await file.readAsString();
+  }
+
+  @override
+  Future<List<String>> readAsLinesAsync(String targetPath) async {
+    final file = File(targetPath);
+    return await file.readAsLines();
   }
 }

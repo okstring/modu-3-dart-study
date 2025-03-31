@@ -26,10 +26,10 @@ void main() {
 
       final json = todos.map((e) => e.toJson()).toList();
       final jsonString = jsonEncode(json);
-      final List<dynamic> serializationJson = jsonDecode(jsonString);
-      final List<Todo> serializationTodos = serializationJson.map((e) => Todo.fromJson(e)).toList();
+      final List<dynamic> deserializationJson = jsonDecode(jsonString);
+      final List<Todo> deserializationTodos = deserializationJson.map((e) => Todo.fromJson(e)).toList();
 
-      expect(todos, equals(serializationTodos));
+      expect(todos, equals(deserializationTodos));
     });
   });
 }
