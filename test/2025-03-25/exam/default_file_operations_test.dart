@@ -22,7 +22,7 @@ void main() {
   // 매번
   setUp(() async {});
 
-  test('파일 복사 성공', () async {
+  test('존재하지 않는 파일 복사 시 예외 발생', () async {
     await fileOperations.copy(sourcePath, targetPath);
 
     final File targetFile = File(targetPath);

@@ -21,7 +21,9 @@ class Address {
       suite: json['suite'] as String? ?? '',
       city: json['city'] as String? ?? '',
       zipcode: json['zipcode'] as String? ?? '',
-      geo: Geo.fromJson(json['geo']),
+      geo: json['geo'] != null
+              ? Geo.fromJson(json['geo'] as Map<String, dynamic>)
+              : Geo(lat: 0.0, lng: 0.0),
     );
   }
 
