@@ -14,8 +14,15 @@ class DefaultFileOperations implements FileOperation {
     file.writeAsStringSync(contents);
   }
 
+  @override
   String read(String targetPath) {
     final file = File(targetPath);
     return file.readAsStringSync();
+  }
+
+  @override
+  Future<String> readAsync(String targetPath) {
+    final file = File(targetPath);
+    return file.readAsString();
   }
 }
