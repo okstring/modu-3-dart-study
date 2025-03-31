@@ -28,10 +28,15 @@ class User {
       name: json['name'] as String? ?? '',
       username: json['username'] as String? ?? '',
       email: json['email'] as String? ?? '',
-      address: Address.fromJson(json['address']),
+      address:
+          json['address'] != null
+              ? Address.fromJson(json['address'])
+              : Address.fromJson({}),
       phone: json['phone'] as String? ?? '',
       website: json['website'] as String? ?? '',
-      company: Company.fromJson(json['company']),
+      company: json['company'] != null
+              ? Company.fromJson(json['company'])
+              : Company.fromJson({}),
     );
   }
 
@@ -49,16 +54,16 @@ class User {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-          other is User &&
-              runtimeType == other.runtimeType &&
-              id == other.id &&
-              name == other.name &&
-              username == other.username &&
-              email == other.email &&
-              address == other.address &&
-              phone == other.phone &&
-              website == other.website &&
-              company == other.company;
+      other is User &&
+          runtimeType == other.runtimeType &&
+          id == other.id &&
+          name == other.name &&
+          username == other.username &&
+          email == other.email &&
+          address == other.address &&
+          phone == other.phone &&
+          website == other.website &&
+          company == other.company;
 
   @override
   int get hashCode =>
