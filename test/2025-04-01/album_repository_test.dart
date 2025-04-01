@@ -1,3 +1,4 @@
+import 'package:collection/collection.dart';
 import 'package:test/test.dart';
 
 import '../../assignment/2025-04-01/data_source/album_data_source.dart';
@@ -92,11 +93,14 @@ void main() {
               .take(limit)
               .toList();
 
-      final users = await albumRepository.getAlbums();
+      final albums = await albumRepository.getAlbums();
       final limitFiveAlbums = await albumRepository.getAlbums(limit: limit);
 
-      expect(users, equals(mockAlbums));
-      expect(limitFiveAlbums, equals(limitFiveMockAlbums));
+      expect(ListEquality().equals(albums, mockAlbums), isTrue);
+      expect(
+        ListEquality().equals(limitFiveAlbums, limitFiveMockAlbums),
+        isTrue,
+      );
     });
   });
 }

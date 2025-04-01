@@ -1,3 +1,4 @@
+import 'package:collection/collection.dart';
 import 'package:test/test.dart';
 
 import '../../assignment/2025-04-01/data_source/comment_data_source.dart';
@@ -153,7 +154,7 @@ void main() {
       final comments = await commentRepository.getComments(postId);
 
       expect(comments.length, equals(mockComments.length));
-      expect(comments, equals(mockComments));
+      expect(ListEquality().equals(comments, mockComments), isTrue);
     });
   });
 }

@@ -1,3 +1,4 @@
+import 'package:collection/collection.dart';
 import 'package:test/test.dart';
 
 import '../../assignment/2025-04-01/data_source/todo_data_source.dart';
@@ -7,84 +8,65 @@ import '../../assignment/2025-04-01/repository/todo_repository_impl.dart';
 
 class MockTodoDataSource implements TodoDataSource {
   static const List<Map<String, dynamic>> mockJsonTodos = [
-    {
-      "userId": 1,
-      "id": 1,
-      "title": "delectus aut autem",
-      "completed": false
-    },
+    {"userId": 1, "id": 1, "title": "delectus aut autem", "completed": false},
     {
       "userId": 1,
       "id": 2,
       "title": "quis ut nam facilis et officia qui",
-      "completed": false
+      "completed": false,
     },
-    {
-      "userId": 1,
-      "id": 3,
-      "title": "fugiat veniam minus",
-      "completed": false
-    },
-    {
-      "userId": 1,
-      "id": 4,
-      "title": "et porro tempora",
-      "completed": true
-    },
+    {"userId": 1, "id": 3, "title": "fugiat veniam minus", "completed": false},
+    {"userId": 1, "id": 4, "title": "et porro tempora", "completed": true},
     {
       "userId": 1,
       "id": 5,
-      "title": "laboriosam mollitia et enim quasi adipisci quia provident illum",
-      "completed": false
+      "title":
+          "laboriosam mollitia et enim quasi adipisci quia provident illum",
+      "completed": false,
     },
     {
       "userId": 1,
       "id": 6,
       "title": "qui ullam ratione quibusdam voluptatem quia omnis",
-      "completed": false
+      "completed": false,
     },
     {
       "userId": 1,
       "id": 7,
       "title": "illo expedita consequatur quia in",
-      "completed": false
+      "completed": false,
     },
     {
       "userId": 1,
       "id": 8,
       "title": "quo adipisci enim quam ut ab",
-      "completed": true
+      "completed": true,
     },
     {
       "userId": 1,
       "id": 9,
       "title": "molestiae perspiciatis ipsa",
-      "completed": false
+      "completed": false,
     },
     {
       "userId": 1,
       "id": 10,
       "title": "illo est ratione doloremque quia maiores aut",
-      "completed": true
+      "completed": true,
     },
     {
       "userId": 1,
       "id": 11,
       "title": "vero rerum temporibus dolor",
-      "completed": true
+      "completed": true,
     },
     {
       "userId": 1,
       "id": 12,
       "title": "ipsa repellendus fugit nisi",
-      "completed": true
+      "completed": true,
     },
-    {
-      "userId": 1,
-      "id": 13,
-      "title": "et doloremque nulla",
-      "completed": false
-    }
+    {"userId": 1, "id": 13, "title": "et doloremque nulla", "completed": false},
   ];
 
   @override
@@ -102,24 +84,25 @@ void main() {
   group('Todo Repository 테스트', () {
     test('getTodos() -> 정상적으로 Todos 반환해야함', () async {
       final mockTodos =
-      MockTodoDataSource.mockJsonTodos
-          .map((e) => Todo.fromJson(e))
-          .toList();
+          MockTodoDataSource.mockJsonTodos
+              .map((e) => Todo.fromJson(e))
+              .toList();
 
       final todos = await todoRepository.getTodos();
 
-      expect(todos, equals(mockTodos));
+      expect(ListEquality().equals(todos, mockTodos), isTrue);
     });
 
     test('.getCompletedTodos() -> 완료 된 todos를 반환해야 한다', () async {
-      final mockTodos = MockTodoDataSource.mockJsonTodos
-          .map((e) => Todo.fromJson(e))
-          .where((e) => e.completed == true)
-          .toList();
+      final mockTodos =
+          MockTodoDataSource.mockJsonTodos
+              .map((e) => Todo.fromJson(e))
+              .where((e) => e.completed == true)
+              .toList();
 
       final todos = await todoRepository.getCompletedTodos();
 
-      expect(todos, equals(mockTodos));
+      expect(ListEquality().equals(todos, mockTodos), isTrue);
     });
   });
 }

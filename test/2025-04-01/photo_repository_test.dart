@@ -1,3 +1,4 @@
+import 'package:collection/collection.dart';
 import 'package:test/test.dart';
 
 import '../../assignment/2025-04-01/data_source/album_data_source.dart';
@@ -243,7 +244,7 @@ void main() {
 
       final photos = await photoRepository.getPhotos(albumId);
 
-      expect(photos, equals(mockPhotos));
+      expect(ListEquality().equals(photos, mockPhotos), isTrue);
     });
   });
 }

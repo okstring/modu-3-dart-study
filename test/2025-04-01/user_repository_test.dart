@@ -243,7 +243,7 @@ void main() {
       final users = await userRepository.getUsersTop10ByUserName();
 
       expect(users.length, equals(mockUsers.length));
-      expect(users, equals(mockUsers));
+      expect(ListEquality().equals(users, mockUsers), isTrue);
     });
   });
 }
