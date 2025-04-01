@@ -7,6 +7,6 @@ class CommentDataSourceImpl implements CommentDataSource {
   @override
   Future<List<Map<String, dynamic>>> fetchComments(String path) async {
     final jsonString = await File(path).readAsString();
-    return jsonDecode(jsonString);
+    return jsonDecode(jsonString) as List<Map<String, dynamic>>;
   }
 }
