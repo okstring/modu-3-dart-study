@@ -1,12 +1,9 @@
 import 'package:test/test.dart';
 
 import '../../assignment/2025-04-01/data_source/album_data_source.dart';
-import '../../assignment/2025-04-01/data_source/user_data_source.dart';
 import '../../assignment/2025-04-01/model/album.dart';
 import '../../assignment/2025-04-01/repository/album_repository.dart';
 import '../../assignment/2025-04-01/repository/album_repository_impl.dart';
-import '../../assignment/2025-04-01/repository/user_repository.dart';
-import '../../assignment/2025-04-01/repository/user_repository_impl.dart';
 
 class MockAlbumDataSource implements AlbumDataSource {
   static const List<Map<String, dynamic>> mockJsonAlbums = [
@@ -85,21 +82,21 @@ void main() {
   group('Album Repository 테스트', () {
     test('getAlbums() -> 정상적으로 Albums 반환해야하며, limit도 잘 동작해야 한다.', () async {
       const limit = 5;
-      final mockUsers =
+      final mockAlbums =
           MockAlbumDataSource.mockJsonAlbums
               .map((e) => Album.fromJson(e))
               .toList();
-      final limitFiveMockUsers =
+      final limitFiveMockAlbums =
           MockAlbumDataSource.mockJsonAlbums
               .map((e) => Album.fromJson(e))
               .take(limit)
               .toList();
 
       final users = await albumRepository.getAlbums();
-      final limitFiveUsers = await albumRepository.getAlbums(limit: limit);
+      final limitFiveAlbums = await albumRepository.getAlbums(limit: limit);
 
-      expect(users, equals(mockUsers));
-      expect(limitFiveUsers, equals(limitFiveMockUsers));
+      expect(users, equals(mockAlbums));
+      expect(limitFiveAlbums, equals(limitFiveMockAlbums));
     });
   });
 }
