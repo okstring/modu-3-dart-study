@@ -1,5 +1,3 @@
-void main() {}
-
 class Comment {
   final int postId;
   final int id;
@@ -15,13 +13,13 @@ class Comment {
     required this.body,
   });
 
-  Comment copyWith(
+  Comment copyWith({
     int? postId,
     int? id,
     String? name,
     String? email,
     String? body,
-  ) {
+  }) {
     return Comment(
       postId: postId ?? this.postId,
       id: id ?? this.id,
