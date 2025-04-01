@@ -10,9 +10,9 @@ class AlbumRepositoryImpl implements AlbumRepository {
     : albumDataSource = albumDataSource ?? AlbumDataSourceImpl();
 
   @override
-  List<Album> getAlbums({int? limit}) {
+  Future<List<Album>> getAlbums({int? limit}) async {
     const path = 'assignment/2025-04-01/assets/albums.json';
-    final json = albumDataSource.fetchAlbums(path);
+    final json = await albumDataSource.fetchAlbums(path);
     final elementsCount = json.length;
     return json
         .map((e) => Album.fromJson(e))
