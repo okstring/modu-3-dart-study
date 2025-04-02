@@ -240,11 +240,13 @@ void main() {
       final mockPhotos =
           MockPhotoDataSource.mockJsonPhotos
               .map((e) => Photo.fromJson(e))
+              .where((e) => e.albumId == albumId)
               .toList();
 
       final photos = await photoRepository.getPhotos(albumId);
 
       expect(ListEquality().equals(photos, mockPhotos), isTrue);
+      expect(photos.every((e) => e.albumId == albumId), isTrue);
     });
   });
 }
