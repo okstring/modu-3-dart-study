@@ -4,15 +4,15 @@ import '../model/album.dart';
 import 'album_repository.dart';
 
 class AlbumRepositoryImpl implements AlbumRepository {
-  final AlbumDataSource albumDataSource;
+  final AlbumDataSource _albumDataSource;
 
   AlbumRepositoryImpl({AlbumDataSource? albumDataSource})
-    : albumDataSource = albumDataSource ?? AlbumDataSourceImpl();
+    : _albumDataSource = albumDataSource ?? AlbumDataSourceImpl();
 
   @override
   Future<List<Album>> getAlbums({int? limit}) async {
     const path = 'assignment/2025-04-01/assets/albums.json';
-    final json = await albumDataSource.fetchAlbums(path);
+    final json = await _albumDataSource.fetchAlbums(path);
     final elementsCount = json.length;
     return json
         .map((e) => Album.fromJson(e))
