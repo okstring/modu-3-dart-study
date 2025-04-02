@@ -3,7 +3,7 @@ class Company {
   final String catchPhrase;
   final String bs;
 
-  Company({required this.name, required this.catchPhrase, required this.bs});
+  const Company({required this.name, required this.catchPhrase, required this.bs});
 
   Company copyWith({String? name, String? catchPhrase, String? bs}) {
     return Company(

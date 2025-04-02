@@ -16,7 +16,7 @@ class User {
     return 'User{id: $id, name: $name, username: $username, email: $email, address: $address, phone: $phone, website: $website, company: $company}';
   }
 
-  User({
+  const User({
     required this.id,
     required this.name,
     required this.username,

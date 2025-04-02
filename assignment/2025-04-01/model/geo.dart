@@ -2,7 +2,7 @@ class Geo {
   final double lat;
   final double lng;
 
-  Geo({required this.lat, required this.lng});
+  const Geo({required this.lat, required this.lng});
 
   Geo copyWith({
     double? lat,

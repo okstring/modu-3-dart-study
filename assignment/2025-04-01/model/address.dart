@@ -7,7 +7,7 @@ class Address {
   final String zipcode;
   final Geo geo;
 
-  Address({
+  const Address({
     required this.street,
     required this.suite,
     required this.city,
