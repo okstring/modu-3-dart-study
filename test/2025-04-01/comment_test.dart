@@ -23,6 +23,7 @@ void main() {
           jsonList.map((e) => Comment.fromJson(e)).toList();
 
       expect(ListEquality().equals(comments, deserializationComments), isTrue);
+      expect(comments[0].name.isNotEmpty , deserializationComments.isNotEmpty);
     });
   });
 }

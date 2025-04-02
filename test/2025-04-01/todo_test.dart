@@ -16,6 +16,7 @@ void main() {
           jsonList.map((e) => Todo.fromJson(e)).toList();
 
       expect(ListEquality().equals(todos, deserializationTodos), isTrue);
+      expect(todos[0].title.isNotEmpty, equals(deserializationTodos[0].title.isNotEmpty));
     });
   });
 }

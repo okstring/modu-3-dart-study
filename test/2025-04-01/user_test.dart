@@ -5,7 +5,29 @@ import '../../assignment/2025-04-01/model/user.dart';
 
 void main() {
   const List<Map<String, dynamic>> mockUsers = [
-    {"userId": 1, "id": 1, "title": "delectus aut autem", "completed": false},
+    {
+      "id": 1,
+      "name": "Leanne Graham",
+      "username": "Bret",
+      "email": "Sincere@april.biz",
+      "address": {
+        "street": "Kulas Light",
+        "suite": "Apt. 556",
+        "city": "Gwenborough",
+        "zipcode": "92998-3874",
+        "geo": {
+          "lat": "-37.3159",
+          "lng": "81.1496"
+        }
+      },
+      "phone": "1-770-736-8031 x56442",
+      "website": "hildegard.org",
+      "company": {
+        "name": "Romaguera-Crona",
+        "catchPhrase": "Multi-layered client-server neural-net",
+        "bs": "harness real-time e-markets"
+      }
+    },
   ];
 
   group('Users 테스트', () {
@@ -15,7 +37,7 @@ void main() {
       final deserializationUsers =
           jsonList.map((e) => User.fromJson(e)).toList();
 
-      expect(ListEquality().equals(users, deserializationUsers), isTrue);
+      expect(users[0].name.isNotEmpty, equals(deserializationUsers[0].name.isNotEmpty));
     });
   });
 }

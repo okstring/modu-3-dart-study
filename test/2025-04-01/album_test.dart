@@ -15,6 +15,7 @@ void main() {
           jsonList.map((e) => Album.fromJson(e)).toList();
 
       expect(albums, deserializationAlbums);
+      expect(albums[0].title.isNotEmpty, deserializationAlbums[0].title.isNotEmpty);
     });
   });
 }

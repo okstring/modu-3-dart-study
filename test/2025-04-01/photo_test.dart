@@ -22,6 +22,7 @@ void main() {
           jsonList.map((e) => Photo.fromJson(e)).toList();
 
       expect(ListEquality().equals(photos, deserializationPhotos), isTrue);
+      expect(photos[0].title.isNotEmpty, equals(deserializationPhotos[0].title.isNotEmpty));
     });
   });
 }

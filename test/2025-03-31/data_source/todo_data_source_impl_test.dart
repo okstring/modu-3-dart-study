@@ -19,9 +19,4 @@ void main() {
 
     expect(todo.toJson(), expected);
   });
-
-  test('2번 문제', () async {
-    final List<Todo> todos = await dataSource.getTodos();
-
-  });
 }
