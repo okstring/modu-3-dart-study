@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:modu_3_dart_study/2025-04-03/data_source/movie_data_source.dart';
 import 'package:modu_3_dart_study/2025-04-03/data_source/remote/movie_data_source_impl.dart';
 import 'package:modu_3_dart_study/2025-04-03/model/movieList.dart';
@@ -10,7 +8,7 @@ import 'package:test/test.dart';
 import '../../network/mock_http_client_impl.dart';
 
 void main() {
-  group('MovieDataSource 테스트', () {
+  group('MovieRepository 테스트', () {
     const body = {
       "results": [
         {
