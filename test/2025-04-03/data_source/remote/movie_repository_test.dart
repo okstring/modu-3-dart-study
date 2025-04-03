@@ -8,7 +8,7 @@ import 'package:test/test.dart';
 import '../../network/mock_http_client_impl.dart';
 
 void main() {
-  group('MovieRepository 테스트', () {
+  group('Mock을 활용한 MovieRepository 테스트', () {
     const body = {
       "results": [
         {
@@ -25,7 +25,7 @@ void main() {
     final MovieDataSource movieDataSource = MovieDataSourceImpl(client: mockHttpClient.mockClient);
     final MovieRepository repository = MovieRepositoryImpl(movieDataSource: movieDataSource);
 
-    test('MockHttpClient 테스트', () async {
+    test('MovieList가 정상적으로 반환되어야 한다.', () async {
       final movieList = await repository.getMovieInfoList();
 
       final json = body;

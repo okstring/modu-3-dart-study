@@ -9,7 +9,7 @@ class TodoDataSourceImpl implements TodoDataSource {
   static const todosUrlString = 'https://jsonplaceholder.typicode.com/todos';
   static todoUrlString(int id) => 'https://jsonplaceholder.typicode.com/todos/$id';
 
-  TodoDataSourceImpl(this.client);
+  TodoDataSourceImpl({required this.client});
 
   @override
   Future<List<Map<String, dynamic>>> getTodos() async {

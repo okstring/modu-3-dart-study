@@ -5,7 +5,7 @@ import 'package:http/testing.dart';
 
 class MockHttpClientImpl {
   final String urlString;
-  final Map<String, List<Map<String, dynamic>>> body;
+  final dynamic body;
 
   MockHttpClientImpl({required this.urlString, required this.body});
 
