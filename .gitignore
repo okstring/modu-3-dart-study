@@ -183,9 +183,6 @@ placeholder/
 # template
 TIL/daily/PR_template.md
 
-# lib/
-Lib/
-
 # 프로젝트 관련 json, csv 파일들
 *.csv
 *.json
