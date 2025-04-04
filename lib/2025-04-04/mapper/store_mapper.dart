@@ -8,12 +8,12 @@ extension StoreMapper on StoreDto {
     return Store(
       addr: addr,
       code: code,
-      createdAt: createdAt?.toDateTime() ?? DateTime(1970, 1, 1),
+      createdAt: createdAt?.toDateTime(format: 'yyyy/MM/dd HH:mm:ss') ?? DateTime(1970, 1, 1),
       lat: lat.toDouble(),
       lng: lng.toDouble(),
       name: name,
       remainStat: remainStat.toRemainStat(),
-      stockAt: stockAt.toDateTime() ?? DateTime(1970, 1, 1),
+      stockAt: stockAt.toDateTime(format: 'yyyy/MM/dd HH:mm:ss') ?? DateTime(1970, 1, 1),
       type: type,
     );
   }
