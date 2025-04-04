@@ -15,7 +15,7 @@ void main() {
       "completed": false
     };
 
-    final Todo todo = await dataSource.getTodo();
+    final Todo todo = await dataSource.getTodo(0);
 
     expect(todo.toJson(), expected);
   });
