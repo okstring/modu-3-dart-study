@@ -18,7 +18,10 @@ class HttpMovieDataSourceImpl implements MovieDataSource {
       }
 
       final List jsonList = jsonDecode(utf8.decode(response.bodyBytes))['results'];
-      return jsonList.cast<Map<String, dynamic>>();
+      return jsonList.map((e) => e as Map<String, dynamic>).toList();
+
+      // return List<Map<String, dynamic>>.from(jsonList);
+      // return jsonList.cast<Map<String, dynamic>>();
     } catch (e) {
       throw Exception('인터넷 연결 오류');
     }
