@@ -3,14 +3,14 @@ import 'package:modu_3_dart_study/2025-04-03/repository/image_repository.dart';
 import '../data_source/image_data_source.dart';
 
 class ImageRepositoryImpl implements ImageRepository {
-  final ImageDataSource imageDataSource;
+  final ImageDataSource _imageDataSource;
 
-  ImageRepositoryImpl({required this.imageDataSource});
+  ImageRepositoryImpl({required ImageDataSource imageDataSource}) : _imageDataSource = imageDataSource;
 
   @override
   Future<void> saveImage(String url, String path) async {
-    final binaryData = await imageDataSource.fetchImage(url);
-    await imageDataSource.saveImage(binaryData, path);
+    final binaryData = await _imageDataSource.fetchImage(url);
+    await _imageDataSource.saveImage(binaryData, path);
   }
 
   @override

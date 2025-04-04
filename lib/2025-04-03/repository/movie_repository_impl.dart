@@ -3,13 +3,13 @@ import '../model/movieList.dart';
 import 'movie_repository.dart';
 
 class MovieRepositoryImpl implements MovieRepository {
-  final MovieDataSource movieDataSource;
+  final MovieDataSource _movieDataSource;
 
-  const MovieRepositoryImpl({required this.movieDataSource});
+  const MovieRepositoryImpl({required MovieDataSource movieDataSource}) : _movieDataSource = movieDataSource;
 
   @override
   Future<MovieList> getMovieInfoList() async {
-    final json = await movieDataSource.getUpcomingMovies();
+    final json = await _movieDataSource.getUpcomingMovies();
     return MovieList.fromJson(json);
   }
 }

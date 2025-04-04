@@ -7,14 +7,14 @@ import 'package:path/path.dart' as p;
 import '../image_data_source.dart';
 
 class ImageDataSourceImpl implements ImageDataSource {
-  final http.Client client;
+  final http.Client _client;
 
-  ImageDataSourceImpl({http.Client? client}) : client = client ?? http.Client();
+  ImageDataSourceImpl({http.Client? client}) : _client = client ?? http.Client();
 
   @override
   Future<Uint8List> fetchImage(String url) async {
     final parsedUrl = Uri.parse(url);
-    return await client.readBytes(parsedUrl);
+    return await _client.readBytes(parsedUrl);
   }
 
   @override
