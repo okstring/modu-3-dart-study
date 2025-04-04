@@ -1,3 +1,4 @@
+import 'package:modu_3_dart_study/2025-04-03/config/api_config.dart';
 import 'package:modu_3_dart_study/2025-04-03/data_source/movie_data_source.dart';
 import 'package:modu_3_dart_study/2025-04-03/data_source/remote/movie_data_source_impl.dart';
 import 'package:modu_3_dart_study/2025-04-03/model/movieList.dart';
@@ -19,7 +20,7 @@ void main() {
         },
       ],
     };
-    const urlString = MovieDataSourceImpl.urlString;
+    final urlString = ApiConfig.movieUrlString();
 
     final mockHttpClient = MockHttpClientImpl(urlString: urlString, body: body);
     final MovieDataSource movieDataSource = MovieDataSourceImpl(client: mockHttpClient.mockClient);

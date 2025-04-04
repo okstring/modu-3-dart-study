@@ -1,19 +1,18 @@
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
+import 'package:modu_3_dart_study/2025-04-03/config/api_config.dart';
 
 import '../todo_data_source.dart';
 
 class TodoDataSourceImpl implements TodoDataSource {
   final http.Client client;
-  static const todosUrlString = 'https://jsonplaceholder.typicode.com/todos';
-  static todoUrlString(int id) => 'https://jsonplaceholder.typicode.com/todos/$id';
 
   TodoDataSourceImpl({required this.client});
 
   @override
   Future<List<Map<String, dynamic>>> getTodos() async {
-    final response = await client.get(Uri.parse(todosUrlString));
+    final response = await client.get(Uri.parse(ApiConfig.todosUrlString));
     if (response.statusCode == 200) {
       final List<dynamic> json = jsonDecode(response.body);
       return json.map((e) => Map<String, dynamic>.from(e)).toList();
@@ -24,7 +23,7 @@ class TodoDataSourceImpl implements TodoDataSource {
 
   @override
   Future<Map<String, dynamic>> getTodo(int id) async {
-    final response = await client.get(Uri.parse(todoUrlString(id)));
+    final response = await client.get(Uri.parse(ApiConfig.todoUrlString(id)));
     if (response.statusCode == 200) {
       return json.decode(response.body);
     } else {

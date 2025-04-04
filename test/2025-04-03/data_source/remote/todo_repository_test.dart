@@ -1,4 +1,5 @@
 import 'package:modu_3_dart_study/2025-04-01/model/todo.dart';
+import 'package:modu_3_dart_study/2025-04-03/config/api_config.dart';
 import 'package:modu_3_dart_study/2025-04-03/data_source/remote/todo_data_source_impl.dart';
 import 'package:modu_3_dart_study/2025-04-03/data_source/todo_data_source.dart';
 import 'package:modu_3_dart_study/2025-04-03/repository/todo_repository.dart';
@@ -22,7 +23,7 @@ void main() {
 
     test('Todos가 정상적으로 반환되어야 한다.', () async {
       // given
-      const todosUrlString = TodoDataSourceImpl.todosUrlString;
+      final todosUrlString = ApiConfig.todosUrlString;
 
       mockHttpClient = MockHttpClientImpl(urlString: todosUrlString, body: todosBody);
 
@@ -51,7 +52,7 @@ void main() {
     test('Todo가 정상적으로 반환되어야 한다.', () async {
       // given
       const id = 1;
-      final todoUrlString = TodoDataSourceImpl.todoUrlString(id);
+      final todoUrlString = ApiConfig.todoUrlString(id);
 
       mockHttpClient = MockHttpClientImpl(urlString: todoUrlString, body: todoBody);
 
