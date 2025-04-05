@@ -190,3 +190,4 @@ TIL/daily/PR_template.md
 
 # json_serialization
 *.g.dart
+*.freezed.dart
