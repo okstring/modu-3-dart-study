@@ -1,5 +1,5 @@
-import 'dart:async';
 import 'dart:convert';
+import 'dart:io';
 
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
@@ -60,12 +60,15 @@ void main() {
   }
 ]
   ''';
-  final PhotoDataSource mockDataSource = MockPhotoDataSource();
-  final PhotoRepository repository = PhotoRepositoryImpl(dataSource: mockDataSource);
+  PhotoDataSource mockDataSource = MockPhotoDataSource();
+  PhotoRepository repository = PhotoRepositoryImpl(dataSource: mockDataSource);
 
-  final processedJsonString = mockJsonString.replaceAll('“', '"').replaceAll('”', '"');
+  final String processedJsonString = mockJsonString
+      .replaceAll('“', '"')
+      .replaceAll('”', '"');
   final List<dynamic> json = jsonDecode(processedJsonString);
-  final photoDtos = json.map((e) => PhotoDto.fromJson(e)).toList();
+  final List<PhotoDto> photoDtos =
+      json.map((e) => PhotoDto.fromJson(e)).toList();
 
   when(mockDataSource.fetchPhotos()).thenAnswer((_) async => photoDtos);
 
@@ -87,5 +90,24 @@ void main() {
       expect(photos[0].caption, isA<String>());
       expect(photos[0].createdAt, isA<DateTime>());
     });
+
+    test(
+      'PhotoDataSource에서 path가 올바르지 않으면 PhotoRepository에서 getPhotos() 호출 시 PathNotFoundException이 발생한다.',
+      () async {
+        const path = 'invalid_path';
+        const pathNotFoundException = PathNotFoundException(
+          path,
+          OSError('invalid path'),
+        );
+
+        when(mockDataSource.path).thenReturn(path);
+        when(mockDataSource.fetchPhotos()).thenThrow(pathNotFoundException);
+
+        expect(
+          () async => await repository.getPhotos(),
+          throwsA(isA<PathNotFoundException>()),
+        );
+      },
+    );
   });
 }
