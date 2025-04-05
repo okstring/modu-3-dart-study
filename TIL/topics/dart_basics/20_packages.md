@@ -111,33 +111,39 @@ class Photo with _$Photo {
 ####   @JsonKey
 
 ```dart
+import 'package:json_annotation/json_annotation.dart';
+
+// 자동 생성될 코드를 연결하는 부분
+part 'photo_dto.g.dart'; // 파일명에 맞게 설정해야 함
+
 // JSON 직렬화를 위한 어노테이션
 @JsonSerializable()
 class PhotoDto {
- // 문자열이나 숫자 형태의 ID를 적절히 변환
- @JsonKey(fromJson: _fromJson)
- num? id;
- String? title;
- String? url;
- // JSON의 snake_case를 Dart의 camelCase로 매핑
- @JsonKey(name: 'created_at')
- String createdAt;
-
- // 생성자
- PhotoDto({required this.id, this.title, this.url, required this.createdAt});
-
- // JSON → 객체 변환 (자동 생성 코드 사용)
- factory PhotoDto.fromJson(Map<String, dynamic> json) => _$PhotoDtoFromJson(json);
- // 객체 → JSON 변환 (자동 생성 코드 사용)
- Map<String, dynamic> toJson() => _$PhotoDtoToJson(this);
-
- // 다양한 형식의 ID 값을 처리하는 커스텀 변환 함수
- static num? _fromJson(dynamic value) {
-   if (value == null) return null;
-   if (value is String) return num.tryParse(value);
-   if (value is num) return value;
-   return null;
- }
+  // 문자열이나 숫자 형태의 ID를 적절히 변환
+  @JsonKey(fromJson: _fromJson)
+  num? id;
+  String? title;
+  String? url;
+  // JSON의 snake_case를 Dart의 camelCase로 매핑
+  @JsonKey(name: 'created_at')
+  String? createdAt;
+  
+  // 생성자
+  PhotoDto({this.id, this.title, this.url, this.createdAt});
+  
+  // JSON → 객체 변환 (자동 생성 코드 사용)
+  factory PhotoDto.fromJson(Map<String, dynamic> json) => _$PhotoDtoFromJson(json);
+  
+  // 객체 → JSON 변환 (자동 생성 코드 사용)
+  Map<String, dynamic> toJson() => _$PhotoDtoToJson(this);
+  
+  // 다양한 형식의 ID 값을 처리하는 커스텀 변환 함수
+  static num? _fromJson(dynamic value) {
+    if (value == null) return null;
+    if (value is String) return num.tryParse(value);
+    if (value is num) return value;
+    return null;
+  }
 }
 ```
 

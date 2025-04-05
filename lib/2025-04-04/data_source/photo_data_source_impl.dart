@@ -5,13 +5,13 @@ import 'package:modu_3_dart_study/2025-04-04/data_source/photo_data_source.dart'
 
 import '../dto/photo_dto.dart';
 
-class PhotoDateSourceImpl implements PhotoDataSource {
+class PhotoDataSourceImpl implements PhotoDataSource {
   final String _path;
 
   @override
   String get path => _path;
 
-  const PhotoDateSourceImpl({required String path}) : _path = path;
+  const PhotoDataSourceImpl({required String path}) : _path = path;
 
   @override
   Future<List<PhotoDto>> fetchPhotos() async {
