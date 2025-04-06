@@ -203,10 +203,10 @@ build/
 pubspec.lock 
 
 # IntelliJ
-# IntelliJ
 *.iml
 *.ipr
 *.iws
 .idea/
 
-
+# mockito
+*.mocks.dart
