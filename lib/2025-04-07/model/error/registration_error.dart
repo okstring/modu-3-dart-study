@@ -21,7 +21,7 @@ sealed class RegistrationError implements Error {
   int get hashCode => errorMessage.hashCode;
 
   @override
-  StackTrace? get stackTrace => null;
+  StackTrace? get stackTrace => StackTrace.current;
 }
 
 final class InvalidEmailError extends RegistrationError {

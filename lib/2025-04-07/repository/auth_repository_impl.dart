@@ -26,16 +26,19 @@ class AuthRepositoryImpl implements AuthRepository {
 
       if (_checkInvalidEmail(user.email)) {
         return Result.error(RegistrationError.invalidEmail());
-      } else if (_checkWeakPassword(user.password)) {
+      }
+
+      if (_checkWeakPassword(user.password)) {
         return Result.error(RegistrationError.weakPassword());
-      } else if (userDto.message != null ||
-          (userDto.message ?? '').isNotEmpty) {
+      }
+
+      if (userDto.message != null && (userDto.message ?? '').isNotEmpty) {
         return Result.error(
           RegistrationError.networkError(message: userDto.message),
         );
-      } else {
-        return Result.success(user);
       }
+
+      return Result.success(user);
     } catch (_) {
       return Result.error(RegistrationError.networkError());
     }
