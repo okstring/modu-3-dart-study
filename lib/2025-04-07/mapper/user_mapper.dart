@@ -10,8 +10,7 @@ extension UserMapper on UserDto {
       email: '$email',
       password: '$password',
       createdAt:
-          createdAt?.toDateTime(format: 'yyyy-MM-ddTHH:mm:ss') ??
-          DateTime(1970, 1, 1),
+          createdAt?.toDateTime(format: 'yyyy-MM-dd') ?? DateTime(1970, 1, 1),
     );
   }
 }

@@ -16,27 +16,35 @@ class AuthRepositoryImpl implements AuthRepository {
     required String email,
     required String password,
   }) async {
-    final userDto = await _authRemoteDataSource.registerUser(
-      email: email,
-      password: password,
-    );
-    final user = userDto.toUser();
-
     try {
+      final userDto = await _authRemoteDataSource.registerUser(
+        email: email,
+        password: password,
+      );
+
+      final user = userDto.toUser();
+
       if (_checkInvalidEmail(user.email)) {
-        return Result.error(RegistrationError.invalidEmail);
+        return Result.error(RegistrationError.invalidEmail());
       } else if (_checkWeakPassword(user.password)) {
-        return Result.error(RegistrationError.weakPassword);
+        return Result.error(RegistrationError.weakPassword());
+      } else if (userDto.message != null ||
+          (userDto.message ?? '').isNotEmpty) {
+        return Result.error(
+          RegistrationError.networkError(message: userDto.message),
+        );
       } else {
         return Result.success(user);
       }
     } catch (_) {
-      return Result.error(RegistrationError.networkError);
+      return Result.error(RegistrationError.networkError());
     }
   }
 
   bool _checkInvalidEmail(String email) {
-    final RegExp regex = RegExp(r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$');
+    final RegExp regex = RegExp(
+      r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',
+    );
     return !regex.hasMatch(email);
   }
 

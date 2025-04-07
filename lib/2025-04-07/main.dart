@@ -1,5 +1,6 @@
 import 'package:modu_3_dart_study/2025-04-07/data_source/auth_remote_data_source.dart';
 import 'package:modu_3_dart_study/2025-04-07/data_source/mock_auth_remote_data_source_impl.dart';
+import 'package:modu_3_dart_study/2025-04-07/dto/user_dto.dart';
 import 'package:modu_3_dart_study/2025-04-07/model/error/registration_error.dart';
 
 import 'core/result.dart';
@@ -9,7 +10,14 @@ import 'repository/auth_repository.dart';
 
 void main() async {
   final AuthRemoteDataSource authRemoteDataSource =
-      MockAuthRemoteDataSourceImpl();
+      MockAuthRemoteDataSourceImpl(
+        returnUserDto: UserDto(
+          id: "1",
+          email: "test@example.com",
+          password: "12345678",
+          createdAt: '2022-03-01',
+        ),
+      );
   final AuthRepository authRepository = AuthRepositoryImpl(
     authRemoteDataSource: authRemoteDataSource,
   );
@@ -24,11 +32,12 @@ void main() async {
       print('사용자 등록 성공: ${result.data.email}');
     case Error<User, RegistrationError>():
       switch (result.error) {
-        case RegistrationError.invalidEmail:
-          print('유효하지 않은 이메일 주소입니다.');
-        case RegistrationError.weakPassword:
-          print('비밀번호는 6자 이상이어야 합니다.');
-        case RegistrationError.networkError:
+        case InvalidEmailError():
+        case WeakPasswordError():
+          print(result.error.errorMessage);
+        case NetworkError(errorMessage: final String message):
+          print(message);
+        case NetworkError():
           print('네트워크 오류가 발생했습니다.');
       }
   }
