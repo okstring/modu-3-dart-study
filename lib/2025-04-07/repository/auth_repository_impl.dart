@@ -23,9 +23,9 @@ class AuthRepositoryImpl implements AuthRepository {
     final user = userDto.toUser();
 
     try {
-      if (!_checkValidEmail(user.email)) {
+      if (_checkInvalidEmail(user.email)) {
         return Result.error(RegistrationError.invalidEmail);
-      } else if (!_checkPassword(user.password)) {
+      } else if (_checkWeakPassword(user.password)) {
         return Result.error(RegistrationError.weakPassword);
       } else {
         return Result.success(user);
@@ -35,12 +35,12 @@ class AuthRepositoryImpl implements AuthRepository {
     }
   }
 
-  bool _checkValidEmail(String email) {
-    final RegExp regex = RegExp(r'^[\w-\\.]+@([\w-]+\\.)+[\w-]{2,4}$');
-    return regex.hasMatch(email);
+  bool _checkInvalidEmail(String email) {
+    final RegExp regex = RegExp(r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$');
+    return !regex.hasMatch(email);
   }
 
-  bool _checkPassword(String password) {
-    return password.length >= 6;
+  bool _checkWeakPassword(String password) {
+    return password.length <= 6;
   }
 }
