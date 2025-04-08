@@ -1,8 +1,10 @@
 @startuml
 'https://plantuml.com/class-diagram
 
-' ================ USER DOMAIN ================
+skinparam ranksep 150
+skinparam nodesep 100
 
+' ================ USER DOMAIN ================
 package "User Domain" {
   enum SocialLogin {
     none
@@ -97,7 +99,7 @@ package "Recipe Domain" {
     List<String> descriptions
   }
 
-  interface tagRepository {
+  interface TagRepository {
     Future<Result<ReceipeTagList>> getTagList()
   }
 
@@ -139,7 +141,7 @@ package "Review Domain" {
     int unlikeCount
   }
 
-  interface reviewRepsitory {
+  interface ReviewRepsitory {
     Future<Result<void>> writeComment(String receipeId, String contents)
     Future<Result<ReviewUiModel>> getReceipeInfo(String id)
     Future<Result<void>> likeReview(String reviewId)
@@ -164,21 +166,22 @@ package "Notification Domain" {
     bool hasRead
   }
 
-  interface notificationRepository {
+  interface NotificationRepository {
     Future<Result<List<Notification>>> getNotifications(ReadAlertType readAlertType)
     Future<Result<void>> readNotifications(String notificationId)
   }
+}
 
 ' ================ RELATIONSHIPS ================
 User -- UserRepository
 User -- AuthRepository
 
 Receipe -- ReceipeRepository
-ReceipeTagList -- tagRepository
+ReceipeTagList -- TagRepository
 Receipe -- UserReceipeRepository
 
-ReviewUiModel -- reviewRepsitory
+ReviewUiModel -- ReviewRepsitory
 
-Notification -- notificationRepository
+Notification -- NotificationRepository
 
 @enduml
