@@ -177,7 +177,6 @@ Receipe -- ReceipeRepository
 ReceipeTagList -- tagRepository
 Receipe -- UserReceipeRepository
 
-' Review는 ReviewRepository에 의존하지 않음
 ReviewUiModel -- reviewRepsitory
 
 Notification -- notificationRepository

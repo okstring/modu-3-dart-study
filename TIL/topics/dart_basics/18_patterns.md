@@ -391,18 +391,9 @@ test('이메일이 유효하지 않으면 에러를 반환한다', () {
 - **MVVM**
 - MVI
 
-## 
+
 
 ### MVC, MVP, MVVM, MVI 패턴 간략 비교
-
-#### 구성 요소와 특징
-
-| 패턴     | 주요 구성 요소             | 핵심 특징                     | 데이터 흐름                           |
-| -------- | -------------------------- | ----------------------------- | ------------------------------------- |
-| **MVC**  | Model, View, Controller    | View가 Model 직접 참조 가능   | Controller → Model ↔ View             |
-| **MVP**  | Model, View, Presenter     | View와 Model 완전 분리        | View ↔ Presenter ↔ Model              |
-| **MVVM** | Model, View, ViewModel     | 데이터 바인딩 자동화          | View ⇄ ViewModel ↔ Model              |
-| **MVI**  | Model(State), View, Intent | 단방향 데이터 흐름, 불변 상태 | Intent → Model → View → Intent (순환) |
 
 #### 주요 차이점
 
