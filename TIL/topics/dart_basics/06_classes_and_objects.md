@@ -1432,3 +1432,161 @@ void main() {
 
 
 
+
+
+
+
+
+
+## 설계 원칙
+
+### 응집도 (Cohesion)
+
+- 모듈이 **하나의 목적을 수행**하는 요소들간의 연관성 척도
+- 모듈 내부의 기능적인 응집 정도를 나타냄
+- **높은 응집도** : 모듈이 하나의 특정 작업이나 기능에 집중
+
+### 결합도 (Coupling)
+
+- 모듈이 다른 모듈에 **의존**하는 정도의 척도
+- 모듈과 모듈간의 상호 결합 정도를 나타냄
+- **낮은 결합도** : 모듈이 서로 독립적으로 작동할 수 있을 때
+
+
+
+**결론: 기능별로 찢는게 좋다**
+
+
+
+### 좋은 코드를 위해 의식해야하는 6가지 코드 작성의 원칙
+
+#### DRY - Don’t Repeat Yourself : 같은 것을 몇번씩 반복하지 말라
+
+- 중복 코드가 있다면 메소드로 분리한다
+
+#### PIE(Program Intently and Expressively : 명확하고 표현력 있게 기술하자)
+
+- 애매한 이름은 쓰지 말자
+- 누가 봐도 알기 쉬운 이름을 쓰자
+- 컨벤션을 따르자
+- 매직 넘버에 이름을 붙이자
+
+#### SRP - Single Responsibility Principle : 클래스에 주어진 책임은 1개뿐
+
+- 단일 책임 원칙
+- 한 부분의 에러를 수정하기 위해서는 그 클래스만 수정하면 된다.
+- 하지만 클래스 분리가 심해지면 오히려 관리가 어렵기도 하다.
+- **외부 객체는 생성자로 주입 받아라**
+
+#### OCP - Open Closed Principle : 개방 폐쇄 원칙
+
+- 확장에 대해서는 열려있고 (확장은 자유롭고), 변경에 대해서는 닫혀있다 (의존 부분의 변경은 불필요)
+- 즉, 수정 없이 확장 가능하도록 하자. 상속, 인터페이스를 열심히 쓰자
+- Iterable, Comparator 등이 좋은 예
+- String 의 경우는 상속 금지이므로 OCP에 반하는 클래스의 대표적인 예.
+- 인터페이스를 적극 활용하여 확장 가능하게 하자.
+
+```dart
+// Bad implementation
+class Hero extends Character {
+    Hero(super.name, super.hp);
+    
+    @override
+    void attack(Slime slime) {
+        print('$name이 $slime을 공격했다.');
+        print('10의 데미지!');
+        slime.hp -= 10;
+    }
+}
+
+// Good implementation
+class Hero extends Character {
+    Hero(super.name, super.hp);
+    
+    @override
+    void attack(Character character) {
+        character.hp -= 10;
+    }
+}
+```
+
+
+
+#### SDP - Stable Dependencies Principle : 안전한 것에 의존하라
+
+- ATM 시스템을 예를 들면 암호 처리 같이 한번 완성되면 수정될 가능성이 없는 클래스에 의존할 만 하다
+- 하지만 가장 좋은 것은 특정 클래스가 아니라 인터페이스에 의존하는 것이다
+  - 클래스는 생성자가 변하거나 할 수 있으나 인터페이스는 거의 그대로이니까.
+
+#### ADP - Acyclic Dependencies Principle: 의존성 비순환 원칙
+
+- 의존 관계에 사이클이 발생되지 않게 한다.
+
+
+
+
+
+### SOLID 원칙
+
+#### SRP - Single Responsibility Principle : 클래스에 주어진 책임은 1개뿐
+
+- 단일 책임 원칙
+- 한 부분의 에러를 수정하기 위해서는 그 클래스만 수정하면 된다.
+- 하지만 클래스 분리가 심해지면 오히려 관리가 어렵기도 하다.
+- **외부 객체는 생성자로 주입 받아라**
+
+#### OCP - Open Closed Principle : 개방 폐쇄 원칙
+
+- 확장에 대해서는 열려있고 (확장은 자유롭고), 변경에 대해서는 닫혀있다 (의존 부분의 변경은 불필요)
+- 즉, 수정 없이 확장 가능하도록 하자. 상속, 인터페이스를 열심히 쓰자
+- Iterable, Comparator 등이 좋은 예
+- String 의 경우는 상속 금지이므로 OCP에 반하는 클래스의 대표적인 예.
+- 인터페이스를 적극 활용하여 확장 가능하게 하자.
+
+```dart
+// Bad implementation
+class Hero extends Character {
+    Hero(super.name, super.hp);
+    
+    @override
+    void attack(Slime slime) {
+        print('$name이 $slime을 공격했다.');
+        print('10의 데미지!');
+        slime.hp -= 10;
+    }
+}
+
+// Good implementation
+class Hero extends Character {
+    Hero(super.name, super.hp);
+    
+    @override
+    void attack(Character character) {
+        character.hp -= 10;
+    }
+}
+```
+
+#### LSP 리스코프 치환 원칙
+
+- 객체는 프로그램의 정확성을 깨뜨리지 않으면서 하위 타입의 인스턴스로 바꿀 수 있어야 한다.
+- Is a 원칙 지키자
+
+
+
+#### ISP 인터페이스 분리 원칙
+
+- 인터페이스 하나에 다 때려넣지 말고 여러개로 쪼개라
+  - Bionic 만 구현하지 말고 Attackable, Moveable, Healable 처럼 기능별로 쪼개라
+
+
+
+#### DIP 의존관계 역전 원칙
+
+- 인터페이스 써라
+  - 메딕이 특정 객체를 받지 않고 Helable 인터페이스 구현체를 받도록 하는 것
+
+
+
+
+
